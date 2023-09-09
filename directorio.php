@@ -68,74 +68,32 @@
         <div class="padre2 div-relative" style="padding: 0px; background-color: #00539F;">
             <div class="trapecio-derecha" style="padding: 0px;"></div>
             <div class="trapecio-izquierda" style="padding: 0px;"></div>
-            <h3 class="futura-titulo" style="color: white; margin-top: 3px; margin-bottom: 6px; margin-left: 150px; margin-right: 3px;">¿Qué es?</h3>
+            <h3 class="futura-titulo" style="color: white; margin-top: 3px; margin-bottom: 6px; margin-left: 150px; margin-right: 3px;">Directorio</h3>
         </div>
           <br>
-          <div class="padre">
-              <div class="hijo" style="padding: 15px;">
-                <div class="div-relative">
-                    <div class="row">
-                        <div class="col-sm-6">
-                          <div class="padre" style="padding: 8px;">
-                              <div class="hijo div-relative">
-                                <?php
-                                // Conectar a la base de datos usando tu archivo de configuración
-                              require_once('admin/db_config.php');
-
-                              // Consultar la base de datos para obtener el texto de que es
-                              $sql = "SELECT foto_que FROM patronato";
-                              $result = $conn->query($sql);
-
-                              // Recorrer los resultados y generar las tarjetas de noticias
-                              while ($row = $result->fetch_assoc()) {
-                                  $foto_que = $row['foto_que'];
-                                  echo '<img src="' . $foto_que . '" alt="Descripción de la imagen" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">';
-                              }
-
-                              // Cerrar la conexión a la base de datos
-                              ?>
-                              
-                              </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-6" style="padding-left: 40px; padding-right: 40px;">
-                          <div class="justificado">
-                              <h3 class="futura-titulo">
-                                <div class="div-relative" style="text-align: left;">
-                                  <div class="linea-verde-2-pequeñas"></div>
-                                  <div class="linea-verde-1-larga"></div>
-                                  <span class="negritas"> <span style="color: #00539F;">Es</span> un ente público y descentralizado</span> <span style="color: #00539F;">que actúa con autonomía técnica y</span> de gestión para el ejercicio de su función.
-                                </div>
-                              </h3>
-                              </div>
-                              <?php
-                              require_once('admin/db_config.php');
-                              // Consultar la base de datos para obtener el texto de que es
-                              $sql = "SELECT que, foto_que FROM patronato";
-                              $result = $conn->query($sql);
-
-                              // Recorrer los resultados y generar las tarjetas de noticias
-                              while ($row = $result->fetch_assoc()) {
-                                  $que = $row['que'];
-                                  $foto_que = $row['foto_que'];
-                                  
-
-                                echo '<p style="text-align: justify;"><span style="font-size: 12pt;">' . $que . '</span></p>';
-                              }
-                              
-                              $conn->close();
-
-                              ?>
-                          
-                              
-                              </div>
-                    </div>
-                </div>
-              </div>
+          <br>
+            <!-- Agrega esta sección después del título "Directorio" -->
+            <div class="contact-card-container">
+            <!-- Generar 10 cards con datos aleatorios -->
+            <?php
+                for ($i = 1; $i <= 10; $i++) {
+                // Simula datos aleatorios para cada card
+                $nombre = "Persona " . $i;
+                $telefono = "Teléfono " . rand(1000000000, 9999999999);
+                $correo = "correo" . $i . "@example.com";
+            ?>
+            <div class="contact-card">
+                <img src="imagenes/user.png" alt="Avatar" title="avatar iconos">
+                <h4><?php echo $nombre; ?></h4>
+                <p><?php echo $telefono; ?></p>
+                <p><?php echo $correo; ?></p>
             </div>
+            <?php } ?>
+            </div>
+
           </div>
         </div>
-        </div>
+    </div>
 
 
         <footer>

@@ -8,6 +8,7 @@
     <!-- CSS de Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/estilos.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  
     <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
@@ -17,63 +18,49 @@
     <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top barra"       style="background-image: url('images/LOGO-01.png'); background-position: left top; background-size: 300px;       background-repeat: no-repeat;">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">MENU</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.php" style="width: 250px; height: 50px;">
-            <!--img src="images/LOGO-01.png" class="logo"-->
-          </a>
-        </div>
-        <div class="collapse navbar-collapse container-fluid" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="sobre" ><a class="borde-blanco" href="index.php">INICIO<span class="sr-only">(current)</span></a></li>
-            <li class="nav-item dropdown sobre">
-                <a href="#" class="nav-link dropdown-toggle borde-blanco" data-toggle="dropdown" role="button" aria-expanded="false">EL PATRONATO<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a class="nav-link" href="quees.php">¿QUÉ ES?</a></li>
-                  <li><a class="nav-link" href="quehace.php">¿QUÉ HACE?</a></li>
-                  <li><a class="nav-link" href="integran.php">¿QUIÉNES LO INTEGRAN?</a></li>
-                  <li><a class="nav-link" href="historia.php">HISTORIA</a></li>
-                  <li><a class="nav-link" href="marcolegal.php">MARCO LEGAL</a></li>
-                </ul>
-            </li>
-            <!--li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li-->
-            <li class="sobre"><a class="nav-link borde-blanco" href="noticias.php">NOTICIAS</a></li>
-            <li class="sobre"><a class="nav-link borde-blanco" href="infraestructura.php" >INFRAESTRUCTURA</a></li>
-            <li class="sobre"><a class="nav-link borde-blanco" href="recaudacion.php">INFORMES</a></li>
-            <li class="nav-item dropdown sobre">
-                <a href="#" class="nav-link dropdown-toggle borde-blanco" data-toggle="dropdown" role="button" aria-expanded="false">TRANSPARENCIA<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    
-                  <li><a class="nav-link" href="https://transparencia.nayarit.gob.mx/index.php?option=com_wrapper&view=wrapper&Itemid=495">PLATAFORMA ESTATAL DE TRANSPARENCIA</a></li>
-                  <li><a class="nav-link" href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown sobre active">
-                <a href="#" class="nav-link dropdown-toggle borde-blanco" data-toggle="dropdown" role="button" aria-expanded="false">FORMATOS<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    
-                    <li class="active"><a class="nav-link" href="proveedores.php">PADRÓN DE PROVEEDORES</a></li>
-                    <li><a class="nav-link" href="contratistas.php">PADRÓN DE CONTRATISTAS</a></li>
-                    <li><a class="nav-link" href="correccion.php">CORRECCIÓN DE DATOS</a></li>
-                </ul>
-            </li>
-            <li class="sobre"><a class="nav-link borde-blanco" href="interes.php" >LIGAS DE INTERÉS</a></li>
-            <li class="sobre"><a class="nav-link borde-blanco" href="contacto.php">CONTACTO</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <br><br><br>
-
-    <br>
+  <header>
+        <nav>
+            <img src="images/LOGO-01.png" alt="Logo">
+            <ul>
+                <li><a href="index.php">INICIO</a></li>
+                <li><a href="#">EL PATRONATO</a>
+                    <ul class="submenu">
+                        <li><a href="quees.php">PATRONATO UAN</a></li>
+                        <li><a href="integran.php">INTEGRANTES</a></li>
+                        <li><a href="marcolegal.php">MARCO LEGAL</a></li>
+                        <li><a href="historia.php">HISTORIA</a></li>
+                        <li><a href="directorio.php">DIRECTORIO</a></li>
+                        <li><a href="organigrama.php">ORGANIGRAMA</a></li>
+                    </ul>
+                </li>
+                <li><a href="noticias.php">PRENSA</a></li>
+                <li>
+                    <a href="#">INFORMES</a>
+                    <ul class="submenu">
+                        <li><a href="recaudacion.php">AVANCE DE GESTION FINANCIERA</a></li>
+                        <li><a href="sevac.php">SEVAC</a></li>
+                        <li><a href="cuenta_publica.php">CUENTA PUBLICA</a></li>
+                        <li><a href="informe_anual.php">INFORME ANUAL DE ACTIVIDADES</a></li>
+                        <li><a href="programa_anual.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
+                    </ul>
+                </li>
+                <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
+                <li><a href="#">TRANSAPRENCIA</a>
+                    <ul class="submenu">
+                        <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
+                        <li><a href="https://transparencia.nayarit.gob.mx/index.php?option=com_wrapper&view=wrapper&Itemid=495">PLATAFORMA ESTATAL DEL TRANSPARENCIA </a></li>
+                    </ul>
+                </li>
+                <li><a href="#">OBRA PUBLICA</a>
+                    <ul class="submenu">
+                        <li><a href="proveedores.php">PADRÓN DE PROVEEDORES</a></li>
+                        <li><a href="contratistas.php">PADRÓN DE CONTRATISTAS</a></li>
+                        <li><a href="correccion.php">CORRECIÓN DE DATOS: </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <div class="padre">
         <div class="hijo" style="padding: 15px;">
           <div class="div-relative" style="max-width: 1300px;">
@@ -138,61 +125,29 @@
         </div>
 
 
-    <div class="padre">
-        <div class="hijo" style="padding: 0px;">
-            <a href="https://twitter.com/PatronatoUan"><i class="fa fa-twitter" style="font-size:24px; padding: 5px; color: black;"></i></a>
-            <a href="https://www.facebook.com/Patronato-UAN-200221974061669/?ref=settings"><i class="fa fa-facebook" style="font-size:24px; padding: 5px; color: black;"></i></a>
-            <a href="https://www.youtube.com/channel/UCjCu5_ROMAPCEDodp3tsb7Q?disable_polymer=true"><i class="fa fa-youtube-play" style="font-size:24px; padding: 5px; color: black;"></i></a>
-            <a href="https://www.instagram.com/patronato_uan/"><i class="fa fa-instagram" style="font-size:24px; padding: 5px; color: black;"></i></a>
+        <footer>
+        <div class="footer-section">
+            <h3>Contacto</h3>
+            <p class="contact-info">administracion@patronatouan.com</p>
+            <p class="contact-info">Tel:   (311) 2 14 38 98</p>
         </div>
+        <div class="footer-section">
+            <h3>Dirección</h3>
+            <p class="contact-info">Country Club No. 98 Col. Versalles.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Enlaces de Interés</h3>
+            <a href="#">Enlace 1</a>
+            <a href="#">Enlace 2</a>
+            <a href="#">Enlace 3</a>
+        </div>
+
+    </footer>
+
+    <div class="privacy-links">
+        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf">Aviso de Privacidad</a>
+        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf">Aviso de Privacidad Simplificado</a>
     </div>
-
-
-
-
-            <div class="padre" style="background-color:#0F57A9; color: white;">
-            <div class="hijo" style="padding: 0;">
-                <div class="padre" style="padding: 0;">
-                    <div class="hijo futura-descripcion" style="padding: 2px;">
-                        administracion@patronatouan.com                    </div>
-                </div>
-                <div class="padre" style="padding: 0;">
-                    <div class="hijo futura-descripcion" style="padding: 2px;">
-                        Tel:   (311) 2 14 38 98                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="padre tamaño-12 negritas" style="background-color:#FFFFFF; color: #000000;">
-            <div class="hijo" style="padding: 0;">
-                <div class="padre" style="padding: 0;">
-                    <div class="hijo futura-descripcion" style="padding: 0;">
-                        <br>
-                        Country Club No. 98 Col. Versalles.                    </div>
-                </div>
-                <div class="padre" style="padding: 0;">
-                    <div class="hijo futura-descripcion" style="padding: 0;">
-                                        <a style="color:#0c0036;" href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf" target="_blank">Aviso de privacidad integral</a>  &nbsp
-                                        <a style="color:#0c0036;" href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf" target="_blank">Aviso de privacidad simplificado</a>  &nbsp
-                     
-                    </div>
-                </div>
-                <br>
-                <div class="padre" style="padding: 0;">
-                    <div class="hijo futura-descripcion" style="padding: 0;">
-                        Patronato para Administrar el Impuesto Especial
-                    </div>
-                </div>
-                <div class="padre" style="padding: 0;">
-                    <div class="hijo futura-descripcion" style="padding: 0; padding-bottom: 15px;">
-                        Destinado a la Universidad Autónoma de Nayarit
-                        <br>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         
 

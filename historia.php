@@ -8,6 +8,7 @@
     <!-- CSS de Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/estilos.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
@@ -17,69 +18,49 @@
     <![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top barra"
-     style="background-image: url('images/LOGO-01.png'); background-position: left top; background-size: 300px;       background-repeat: no-repeat;">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">MENU</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php" style="width: 250px; height: 50px;">
-                <!--img src="images/LOGO-01.png" class="logo"-->
-            </a>
-        </div>
-        <div class="collapse navbar-collapse container-fluid" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="sobre"><a class="borde-blanco" href="index.php">INICIO<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown sobre active">
-                    <a href="#" class="nav-link dropdown-toggle borde-blanco" data-toggle="dropdown" role="button"
-                       aria-expanded="false">EL PATRONATO<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a class="nav-link" href="quees.php">¿QUÉ ES?</a></li>
-                        <li><a class="nav-link" href="quehace.php">¿QUÉ HACE?</a></li>
-                        <li><a class="nav-link" href="integran.php">¿QUIÉNES LO INTEGRAN?</a></li>
-                        <li class="active"><a class="nav-link" href="historia.php">HISTORIA</a></li>
-                        <li><a class="nav-link" href="marcolegal.php">MARCO LEGAL</a></li>
+<header>
+        <nav>
+            <img src="images/LOGO-01.png" alt="Logo">
+            <ul>
+                <li><a href="index.php">INICIO</a></li>
+                <li><a href="#">EL PATRONATO</a>
+                    <ul class="submenu">
+                        <li><a href="quees.php">PATRONATO UAN</a></li>
+                        <li><a href="integran.php">INTEGRANTES</a></li>
+                        <li><a href="marcolegal.php">MARCO LEGAL</a></li>
+                        <li><a href="historia.php">HISTORIA</a></li>
+                        <li><a href="directorio.php">DIRECTORIO</a></li>
+                        <li><a href="organigrama.php">ORGANIGRAMA</a></li>
                     </ul>
                 </li>
-                <!--li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li-->
-                <li class="sobre"><a class="nav-link borde-blanco" href="noticias.php">NOTICIAS</a></li>
-                <li class="sobre"><a class="nav-link borde-blanco" href="infraestructura.php">INFRAESTRUCTURA</a></li>
-                <li class="sobre"><a class="nav-link borde-blanco" href="recaudacion.php">INFORMES</a></li>
-                <li class="nav-item dropdown sobre">
-                    <a href="#" class="nav-link dropdown-toggle borde-blanco" data-toggle="dropdown" role="button"
-                       aria-expanded="false">TRANSPARENCIA<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-
-                        <li><a class="nav-link" href="https://transparencia.nayarit.gob.mx/index.php?option=com_wrapper&view=wrapper&Itemid=495">PLATAFORMA ESTATAL DE TRANSPARENCIA</a></li>
-                        <li><a class="nav-link" href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
+                <li><a href="noticias.php">PRENSA</a></li>
+                <li>
+                    <a href="#">INFORMES</a>
+                    <ul class="submenu">
+                        <li><a href="recaudacion.php">AVANCE DE GESTION FINANCIERA</a></li>
+                        <li><a href="sevac.php">SEVAC</a></li>
+                        <li><a href="cuenta_publica.php">CUENTA PUBLICA</a></li>
+                        <li><a href="informe_anual.php">INFORME ANUAL DE ACTIVIDADES</a></li>
+                        <li><a href="programa_anual.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
                     </ul>
                 </li>
-
-                <li class="nav-item dropdown sobre">
-                    <a href="#" class="nav-link dropdown-toggle borde-blanco" data-toggle="dropdown" role="button"
-                       aria-expanded="false">FORMATOS<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-
-                        <li><a class="nav-link" href="proveedores.php">PADRÓN DE PROVEEDORES</a></li>
-                        <li><a class="nav-link" href="contratistas.php">PATRON DE CONTRATISTAS</a></li>
-                        <li><a class="nav-link" href="correccion.php">CORRECCIÓN DE DATOS</a></li>
+                <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
+                <li><a href="#">TRANSAPRENCIA</a>
+                    <ul class="submenu">
+                        <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
+                        <li><a href="https://transparencia.nayarit.gob.mx/index.php?option=com_wrapper&view=wrapper&Itemid=495">PLATAFORMA ESTATAL DEL TRANSPARENCIA </a></li>
                     </ul>
                 </li>
-                <li class="sobre"><a class="nav-link borde-blanco" href="interes.php">LIGAS DE INTERÉS</a></li>
-                <li class="sobre"><a class="nav-link borde-blanco" href="contacto.php">CONTACTO</a></li>
+                <li><a href="#">OBRA PUBLICA</a>
+                    <ul class="submenu">
+                        <li><a href="proveedores.php">PADRÓN DE PROVEEDORES</a></li>
+                        <li><a href="contratistas.php">PADRÓN DE CONTRATISTAS</a></li>
+                        <li><a href="correccion.php">CORRECIÓN DE DATOS: </a></li>
+                    </ul>
+                </li>
             </ul>
-        </div>
-    </div>
-</nav>
-<br><br><br>
-
-<br>
+        </nav>
+    </header>
 <div class="padre">
     <div class="hijo" style="padding: 15px;">
         <div class="div-relative" style="max-width: 1300px;">
@@ -117,100 +98,78 @@
             <div class="col-md-6">
 
                 <div align="center">
-                                            <img src="uploads/images/historia/camino-plata-uan.jpg" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;" height="342" width="496" >
-                        <br>
-                        <br>
-                        <br>
-                                                <img src="uploads/images/historia/caminosplatas.jpg" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;" height="342" width="496" >
-                        <br>
-                        <br>
-                        <br>
-                                                <img src="uploads/images/historia/HISTORIA_1.jpg" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;" height="342" width="496" >
-                        <br>
-                        <br>
-                        <br>
-                                                <img src="uploads/images/historia/1.jpg" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;" height="342" width="496" >
-                        <br>
-                        <br>
-                        <br>
+                <?php
+                // Conectar a la base de datos usando tu archivo de configuración
+                require_once('admin/db_config.php');
+
+                // Consultar la base de datos para obtener el texto de la historia
+                $sql = "SELECT archivo FROM fotos_historia";
+                $result = $conn->query($sql);
+
+                // Recorrer los resultados y generar las tarjetas de noticias
+                while ($row = $result->fetch_assoc()) {
+                    $archivo = $row['archivo'];
+
+                    echo '<br>';
+                    echo '<img src="' . $archivo . '" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;" height="342" width="496">';
+                    echo '<br>';
+                    echo '<br>';
+                }
+
+                ?>                
+        </div>
                         
                 </div>
 
 
 
             </div>
-                            <p style="text-align: justify;"><span style="font-size: 12pt;">El Lic. Roberto G&oacute;mez Reyes, public&oacute; en el Peri&oacute;dico Oficial el decreto n&uacute;mero 5274 que conten&iacute;a la Ley para Administrar el Impuesto especial destinado a la Universidad Aut&oacute;noma de Nayarit, en donde crea el Impuesto Adicional del 10% para el sostenimiento de la Universidad Aut&oacute;noma de Nayarit, mismo que se causar&iacute;a sobre los ingresos establecidos y los que llegaren a establecerse en las leyes fiscales del Estado, con la finalidad de que su producto se destinara &iacute;ntegramente al incremento del patrimonio de la Universidad Aut&oacute;noma de Nayarit; el impuesto adicional concentrado en la Direcci&oacute;n General de Hacienda ser&iacute;a entregado para su administraci&oacute;n a un Patronato integrado por los representantes de los sectores: obrero, campesino, popular, de la Universidad, del Ejecutivo Local y de la iniciativa privada.</span></p>
-<p style="text-align: justify;"><span style="font-size: 12pt;">Sin embargo, aunque el Patronato UAN fue creado desde 1970 empez&oacute; a realizar actividades en beneficio de la m&aacute;xima casa de estudios de Nayarit en el a&ntilde;o 1976 sin bases administrativas, solo con la firme convicci&oacute;n de propiciar el desarrollo del Estado a trav&eacute;s del fortalecimiento de la Universidad Aut&oacute;noma de Nayarit.</span></p>
-<p style="text-align: justify;"><span style="font-size: 12pt;">Con el transcurso del tiempo se comenz&oacute; a visualizar que en la Ley de 1970, del Patronato antes mencionado, contaba con un sin n&uacute;meros de lagunas y para tratar de resolver estos problemas en el decreto 7888 publicado el 29 de Noviembre de 1995 en el Peri&oacute;dico Oficial del Estado de Nayarit, derogatorio de su similar 5274, en donde se estableci&oacute; el destino exclusivo del monto del impuesto, regul&oacute; puntualmente la integraci&oacute;n del Patronato para Administrar el Impuesto Especial Destinado a la Universidad Aut&oacute;noma de Nayarit y los requisitos de elegibilidad para los cargos de Presidente y Tesorero, el funcionamiento del Patronato como &oacute;rgano colegiado as&iacute; como la designaci&oacute;n y duraci&oacute;n de sus integrantes, adem&aacute;s de establecer que el ejercicio del cargo ser&iacute;a honor&iacute;ficos, es decir, sin retribuci&oacute;n alguna por su desempe&ntilde;o, cosa que hasta la fecha se mantiene vigente.</span></p>
-<p style="text-align: justify;"><span style="font-size: 12pt;">A partir de 1996 se estableci&oacute; que el Patronato para Administrar el Impuesto Especial Destinado la Universidad Aut&oacute;noma de Nayarit, encargado de recibir, concentrar y administrar el producto del Impuesto Especial mismo que se destina &uacute;nica y exclusivamente a fomentar e incrementar el patrimonio de la Universidad Aut&oacute;noma de Nayarit y al financiamiento de sus actividades acad&eacute;micas, de extensi&oacute;n, vinculaci&oacute;n e investigaci&oacute;n.</span></p>
-<p style="text-align: justify;"><span style="font-size: 12pt;">Este Impuesto Especial destinado a la Universidad Aut&oacute;noma de Nayarit, se causaba y se pagaba a la tasa del 12% sobre el pago de impuestos, de derechos y productos establecidos y los que llegaran a establecerse en las leyes fiscales tanto del Estado como de los Municipios.</span></p>
-<p style="text-align: justify;"><span style="font-size: 12pt;">El 28 de Febrero del a&ntilde;o 2009 fue publicado en el Peri&oacute;dico Oficial del Gobierno del Estado de Nayarit el Reglamento de la Ley del Patronato Para Administrar el Impuesto Especial Destinado a la Universidad Aut&oacute;noma de Nayarit, en el cual se aclaran algunas situaciones que establece la Ley, dentro de las que se destaca las funciones que deben de tener la Coordinaci&oacute;n General, el &Aacute;rea Jur&iacute;dica y el &Aacute;rea de Obra del Patronato antes mencionado.</span></p>
-<p style="text-align: justify;"><span style="font-size: 12pt;">El 24 de julio de 2014 se public&oacute; en el Peri&oacute;dico Oficial del Gobierno del Estado de Nayarit una reforma a la Ley del Patronato para Administrar el Impuesto Especial Destinado a la Universidad Aut&oacute;noma de Nayarit, en donde se establecen modificaciones trascendentales con la finalidad de que el recurso que recaudan los Ayuntamientos de dicho estado, lleguen a este Organismo.</span></p>
-<p style="text-align: justify;"><span style="font-size: 12pt;">El 14 de junio de 2021 se public&oacute; en el Peri&oacute;dico Oficial del Gobierno del Estado de Nayarit una reforma al Reglamento Interior del Patronato UAN, estableciendo nuevos puestos y funciones en la estructura administrativa de la entidad.</span></p>
-<p style="text-align: justify;"><span style="font-size: 12pt;">El 8 de diciembre de 2021, por iniciativa &nbsp;del Dr. Miguel &Aacute;ngela Navarro Quintero Gobernador Constitucional del Estado de Nayarit, se publica en el Peri&oacute;dico Oficial la &uacute;ltima enmienda en la Ley del Patronato UAN, donde se establece que el Impuesto Especial pasar&aacute; del 12% al 15%. Asimismo, se indica que el 25% de lo recaudado ser&aacute; para el fomento y financiamiento de los rubros de investigaci&oacute;n, vinculaci&oacute;n, extensi&oacute;n y actividades acad&eacute;micas. Mientras que el 75% ser&aacute; destinando al pago de la deuda de la Universidad Aut&oacute;noma de Nayarit, contratada hasta el 18 de septiembre de 2021.</span></p>                
+            <?php
+                // Conectar a la base de datos usando tu archivo de configuración
+                require_once('admin/db_config.php');
+
+                // Consultar la base de datos para obtener el texto de la historia
+                $sql = "SELECT historia FROM historia";
+                $result = $conn->query($sql);
+
+                // Recorrer los resultados y generar las tarjetas de noticias
+                while ($row = $result->fetch_assoc()) {
+                    $historia = $row['historia'];
+
+                echo '<p style="text-align: justify; margin-right: 50px;"><span style="font-size: 12pt; ">' . $historia . '</span></p>';
+                }
+
+                // Cerrar la conexión a la base de datos
+                $conn->close();
+                ?>                
         </div>
     </div>
 </div>
 </div>
 
-<div class="padre">
-    <div class="hijo" style="padding: 0px;">
-        <a href="https://twitter.com/PatronatoUan"><i class="fa fa-twitter" style="font-size:24px; padding: 5px; color: black;"></i></a>
-        <a href="https://www.facebook.com/Patronato-UAN-200221974061669/?ref=settings"><i class="fa fa-facebook" style="font-size:24px; padding: 5px; color: black;"></i></a>
-        <a href="https://www.youtube.com/channel/UCjCu5_ROMAPCEDodp3tsb7Q?disable_polymer=true"><i class="fa fa-youtube-play" style="font-size:24px; padding: 5px; color: black;"></i></a>
-        <a href="https://www.instagram.com/patronato_uan/"><i class="fa fa-instagram" style="font-size:24px; padding: 5px; color: black;"></i></a>
-    </div>
-</div>
-
-
-
-
-    <div class="padre" style="background-color:#0F57A9; color: white;">
-        <div class="hijo" style="padding: 0;">
-            <div class="padre" style="padding: 0;">
-                <div class="hijo futura-descripcion" style="padding: 2px;">
-                    administracion@patronatouan.com                </div>
-            </div>
-            <div class="padre" style="padding: 0;">
-                <div class="hijo futura-descripcion" style="padding: 2px;">
-                    Tel:   (311) 2 14 38 98                </div>
-            </div>
+<footer>
+        <div class="footer-section">
+            <h3>Contacto</h3>
+            <p class="contact-info">administracion@patronatouan.com</p>
+            <p class="contact-info">Tel:   (311) 2 14 38 98</p>
         </div>
-    </div>
-
-
-
-    <div class="padre tamaño-12 negritas" style="background-color:#FFFFFF; color: #000000;">
-        <div class="hijo" style="padding: 0;">
-            <div class="padre" style="padding: 0;">
-                <div class="hijo futura-descripcion" style="padding: 0;">
-                    <br>
-                    Country Club No. 98 Col. Versalles.                </div>
-            </div>
-            <div class="padre" style="padding: 0;">
-                <div class="hijo futura-descripcion" style="padding: 0;">
-                
-                                        <a style="color:#0c0036;" href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf" target="_blank">Aviso de privacidad integral</a>  &nbsp
-                                        <a style="color:#0c0036;" href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf" target="_blank">Aviso de privacidad simplificado</a>  &nbsp
-                     
-               
-                </div>
-            </div>
-            <br>
-            <div class="padre" style="padding: 0;">
-                <div class="hijo futura-descripcion" style="padding: 0;">
-                    Patronato para Administrar el Impuesto Especial
-                </div>
-            </div>
-            <div class="padre" style="padding: 0;">
-                <div class="hijo futura-descripcion" style="padding: 0; padding-bottom: 15px;">
-                    Destinado a la Universidad Autónoma de Nayarit
-                    <br>
-                </div>
-            </div>
+        <div class="footer-section">
+            <h3>Dirección</h3>
+            <p class="contact-info">Country Club No. 98 Col. Versalles.</p>
         </div>
-    </div>
+        <div class="footer-section">
+            <h3>Enlaces de Interés</h3>
+            <a href="#">Enlace 1</a>
+            <a href="#">Enlace 2</a>
+            <a href="#">Enlace 3</a>
+        </div>
 
+    </footer>
+
+    <div class="privacy-links">
+        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf">Aviso de Privacidad</a>
+        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf">Aviso de Privacidad Simplificado</a>
+    </div>
     
 
 

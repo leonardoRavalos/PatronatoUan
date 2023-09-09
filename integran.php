@@ -68,7 +68,7 @@
         <div class="padre2 div-relative" style="padding: 0px; background-color: #00539F;">
             <div class="trapecio-derecha" style="padding: 0px;"></div>
             <div class="trapecio-izquierda" style="padding: 0px;"></div>
-            <h3 class="futura-titulo" style="color: white; margin-top: 3px; margin-bottom: 6px; margin-left: 150px; margin-right: 3px;">Función</h3>
+            <h3 class="futura-titulo" style="color: white; margin-top: 3px; margin-bottom: 6px; margin-left: 150px; margin-right: 3px;">Integrantes</h3>
         </div>
           <br>
           <div class="padre">
@@ -78,23 +78,22 @@
                         <div class="col-sm-6">
                           <div class="padre" style="padding: 8px;">
                               <div class="hijo div-relative">
-                                <?php
+                              <?php
                                 // Conectar a la base de datos usando tu archivo de configuración
                               require_once('admin/db_config.php');
 
                               // Consultar la base de datos para obtener el texto de que es
-                              $sql = "SELECT foto_quien FROM patronato";
+                              $sql = "SELECT foto_integra FROM patronato";
                               $result = $conn->query($sql);
 
                               // Recorrer los resultados y generar las tarjetas de noticias
                               while ($row = $result->fetch_assoc()) {
-                                  $foto_quien = $row['foto_quien'];
-                                  echo '<img src="' . $foto_quien . '" alt="Descripción de la imagen" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">';
+                                  $foto_integra = $row['foto_integra'];
+                                  echo '<img src="' . $foto_integra . '" alt="Descripción de la imagen" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">';
                               }
 
                               // Cerrar la conexión a la base de datos
                               ?>
-                              
                               </div>
                           </div>
                         </div>
@@ -104,35 +103,43 @@
                                 <div class="div-relative" style="text-align: left;">
                                   <div class="linea-verde-2-pequeñas"></div>
                                   <div class="linea-verde-1-larga"></div>
-                                  <span class="negritas"> <span style="color: #00539F;">Es</span> un ente público y descentralizado</span> <span style="color: #00539F;">que actúa con autonomía técnica y</span> de gestión para el ejercicio de su función.
+
+                                      <span class="negritas">
+                                      <span style="color: #00539F;">Estos</span>
+                                      cargos son otorgados a empresarios</span>
+                                      de éxito y que cuentan con una amplia experiencia
+                                      financiera, comprometidos con el desarrollo
+                                      <span style="color: #00539F;">del Estado a través de la Universidad</span>
                                 </div>
                               </h3>
-                              </div>
-                              <?php
+                          </div>
+                          <?php
+                              // Conectar a la base de datos usando tu archivo de configuración
                               require_once('admin/db_config.php');
-                              // Consultar la base de datos para obtener el texto de que es
-                              $sql = "SELECT quien, foto_quien FROM patronato";
+
+                              // Consultar la base de datos para obtener el texto de los integrantes
+                              $sql = "SELECT integrantes FROM patronato";
                               $result = $conn->query($sql);
 
                               // Recorrer los resultados y generar las tarjetas de noticias
                               while ($row = $result->fetch_assoc()) {
-                                  $quien = $row['quien'];
-                                  $foto_quien = $row['foto_quien'];
-                                  
+                                  $integrantes = $row['integrantes'];
 
-                                echo '<p style="text-align: justify;"><span style="font-size: 12pt;">' . $quien . '</span></p>';
+                                echo '<p style="text-align: justify;"><span style="font-size: 12pt;">' . $integrantes . '</span></p>';
                               }
-                              
-                              $conn->close();
 
+                              // Cerrar la conexión a la base de datos
+                              $conn->close();
                               ?>
-                          
-                              
-                              </div>
+                                                            
+<p style="text-align: justify;"><span style="font-size: 12pt;">Para atender sus comentarios o dudas, la estructura administrativa le podr&aacute; atender en el correo: <a href="mailto:administracion@patronatouan.com">administracion@patronatouan.com</a></span></p>
+<p style="text-align: justify;"><span style="font-size: 12pt;">Directorio de Servidores P&uacute;blicos del Patronato de la UAN&nbsp;</span></p>
+<p style="text-align: justify;"><a title="Directorio" href="https://drive.google.com/file/d/1XOuYdWm87SBjvE1KRAzm23PXGobNYX0k/view?usp=sharing" target="_blank" rel="noopener">Consulte aqu&iacute;</a></p>                                                        </div>
                     </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
         </div>
@@ -149,16 +156,16 @@
         </div>
         <div class="footer-section">
             <h3>Enlaces de Interés</h3>
-            <a href="https://www.nayarit.gob.mx/">Gobierno de nayarit</a><br>
-            <a href="https://www.uan.edu.mx/">Universidad Autonoma de Nayarit</a><br>
-            <a href="https://www.facebook.com/FUNUAN.AC">Fundacion UAN</a><br>
+            <a href="#">Enlace 1</a>
+            <a href="#">Enlace 2</a>
+            <a href="#">Enlace 3</a>
         </div>
 
     </footer>
 
     <div class="privacy-links">
-        <a href="https://www.patronato.nayarit.gob.mx/uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf">Aviso de Privacidad</a>
-        <a href="https://www.patronato.nayarit.gob.mx/uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf">Aviso de Privacidad Simplificado</a>
+        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf">Aviso de Privacidad</a>
+        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf">Aviso de Privacidad Simplificado</a>
     </div>
 
         
@@ -180,4 +187,5 @@
     style="border:0"
     allowfullscreen></iframe-->
   </body>
+
 </html>

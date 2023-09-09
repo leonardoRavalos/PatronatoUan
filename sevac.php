@@ -70,7 +70,7 @@
                 <div class="trapecio-derecha" style="padding: 0px;"></div>
                 <div class="trapecio-izquierda" style="padding: 0px;"></div>
                 <h3 class="futura-titulo"
-                style="color: white; margin-top: 3px; margin-bottom: 6px; margin-left: 150px; margin-right: 3px;">AVANCE DE GESTION FINANCIERA</h3>
+                style="color: white; margin-top: 3px; margin-bottom: 6px; margin-left: 150px; margin-right: 3px;">SEVAC</h3>
             </div>
             <br>
             <div class="padre">

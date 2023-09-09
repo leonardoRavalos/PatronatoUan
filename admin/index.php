@@ -44,7 +44,7 @@
                             <tr>
                                 <td height="60" bgcolor="#1356A4">
                                     <p align="center"><b>
-					<font face="Verdana" size="4" color="white">Login</font></b></td>
+                                    <font face="Verdana" size="4" color="white">Login</font></b></td>
                             </tr>
                             <tr>
                                 <td height="28" bgcolor="white">&nbsp;
@@ -54,14 +54,14 @@
                                                 <td>
                                                     <form action="login.php" method="post" name="formulario">
                                                         <b>
-								<font face="Arial" size="2" color="#333333">Usuario:</font></b><br>
+                                                        <font face="Arial" size="2" color="#333333">Usuario:</font></b><br>
                                                         <input name="username" type="text" id="username" autocomplete="off" required size="25" autofocus>
                                                         <p><b>
-									<font face="Arial" size="2" color="#333333">Contraseña:</font></b><br>
+                                                        <font face="Arial" size="2" color="#333333">Contraseña:</font></b><br>
 
-                                                            <input name="password" type="text" value="Password" autocomplete="off" required size="25" style="color:#666" onfocus="cambiaApass(this)">
-                                                            <br><br>
-                                                            <input type="submit" name="Submit" value=" :: Ingresar :: "></p>
+                                                        <input name="password" type="password" autocomplete="off" required size="25">
+                                                        <br><br>
+                                                        <input type="submit" name="Submit" value="Iniciar Sesión"></p>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -72,7 +72,7 @@
                             <tr>
                                 <td bgcolor="#1356A4" height="60">
                                     <center><b>
-					<font face="Arial" size="1" color="#FFFFFF">PATRONATO UAN Administrador</font></b></center>
+                                    <font face="Arial" size="1" color="#FFFFFF">PATRONATO UAN Administrador</font></b></center>
                                 </td>
                             </tr>
                         </table>
