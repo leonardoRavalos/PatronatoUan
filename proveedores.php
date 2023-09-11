@@ -26,6 +26,7 @@
                 <li><a href="#">EL PATRONATO</a>
                     <ul class="submenu">
                         <li><a href="quees.php">PATRONATO UAN</a></li>
+                        <li><a href="quehace.php">FUNCIÓN</a></li>
                         <li><a href="integran.php">INTEGRANTES</a></li>
                         <li><a href="marcolegal.php">MARCO LEGAL</a></li>
                         <li><a href="historia.php">HISTORIA</a></li>
@@ -37,14 +38,14 @@
                 <li>
                     <a href="#">INFORMES</a>
                     <ul class="submenu">
-                        <li><a href="recaudacion.php">AVANCE DE GESTION FINANCIERA</a></li>
-                        <li><a href="sevac.php">SEVAC</a></li>
-                        <li><a href="cuenta_publica.php">CUENTA PUBLICA</a></li>
-                        <li><a href="informe_anual.php">INFORME ANUAL DE ACTIVIDADES</a></li>
-                        <li><a href="programa_anual.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
+                        <li><a href="manteniminento.php">AVANCE DE GESTION FINANCIERA</a></li>
+                        <li><a href="manteniminento.php">SEVAC</a></li>
+                        <li><a href="manteniminento.php">CUENTA PUBLICA</a></li>
+                        <li><a href="manteniminento.php">INFORME ANUAL DE ACTIVIDADES</a></li>
+                        <li><a href="manteniminento.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
                     </ul>
                 </li>
-                <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
+                <li><a href="manteniminento.php">INFRAESTRUCTURA</a></li>
                 <li><a href="#">TRANSAPRENCIA</a>
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
@@ -93,27 +94,55 @@
                                       </p>
                                     </div>
                         </div>
-                        <div class="col-sm-6">
-                          <div class="padre">
-                            <div class="hijo" style="padding: 0;">
-                                <div class="row">
-                                    <div class="col-md-1" style="padding-bottom: 15px;">
-                                        <div class="padre">
-                                          <a target="_blank" style="text-decoration: none;" href="contratos/PADRON_DE_PROVEEDORES_2023-02.pdf">
-                                              <div class="pdf text-pdf futura-descripcion">PDF</div>
-                                          </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-11" style="padding-bottom: 15px;">
-                                        <div class="padre2">
-                                            <div class="nota-pdf futura-descripcion">
-                                                DESCARGA PADRÓN DE PROVEEDORES                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
+                        <?php
+                        require_once('admin/db_config.php');
+
+                        // Consulta SQL para obtener los datos de la tabla formatos
+                        $sql = "SELECT f.idformato, f.archivo, f.titulo, sf.idseccion
+                                FROM formatos AS f
+                                JOIN secciones_formato AS sf ON f.seccion = sf.idseccion
+                                WHERE sf.idseccion = 1";
+
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $idformato = $row["idformato"];
+                                $archivo = $row["archivo"];
+                                $descripcion = $row["titulo"];
+
+                                // Generar el código HTML para cada elemento
+                                echo '<div class="col-sm-6">';
+                                echo '<div class="padre">';
+                                echo '<div class="hijo" style="padding: 0;">';
+                                echo '<div class="row">';
+                                echo '<div class="col-md-3" style="padding-bottom: 15px;">';
+                                echo '<div class="padre">';
+                                echo '<a href="' . $archivo . '" target="_blank" style="text-decoration: none;">';
+                                echo '<div>';
+                                echo '<img class="pdf-image" src="imagenes/pdf.png">';
+                                echo '</div>';
+                                echo '</a>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '<div class="col-md-9" style="padding-bottom: 15px;">';
+                                echo '<div class="padre2">';
+                                echo '<div class="nota-pdf futura-descripcion">' . $descripcion . '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                            }
+                        } else {
+                            echo "No se encontraron registros en la tabla formatos para la sección 1.";
+                        }
+
+                        // Cierra la conexión a la base de datos
+                        $conn->close();
+                        ?>
+
                       </div>
                   </div>
               </div>
@@ -137,9 +166,9 @@
         </div>
         <div class="footer-section">
             <h3>Enlaces de Interés</h3>
-            <a href="#">Enlace 1</a>
-            <a href="#">Enlace 2</a>
-            <a href="#">Enlace 3</a>
+            <a href="https://www.nayarit.gob.mx/">Gobierno de nayarit</a><br>
+            <a href="https://www.uan.edu.mx/">Universidad Autonoma de Nayarit</a><br>
+            <a href="https://www.facebook.com/FUNUAN.AC">Fundacion UAN</a><br>
         </div>
 
     </footer>

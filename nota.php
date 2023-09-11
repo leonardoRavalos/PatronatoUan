@@ -26,6 +26,7 @@
                 <li><a href="#">EL PATRONATO</a>
                     <ul class="submenu">
                         <li><a href="quees.php">PATRONATO UAN</a></li>
+                        <li><a href="quehace.php">FUNCIÓN</a></li>
                         <li><a href="integran.php">INTEGRANTES</a></li>
                         <li><a href="marcolegal.php">MARCO LEGAL</a></li>
                         <li><a href="historia.php">HISTORIA</a></li>
@@ -37,14 +38,14 @@
                 <li>
                     <a href="#">INFORMES</a>
                     <ul class="submenu">
-                        <li><a href="recaudacion.php">AVANCE DE GESTION FINANCIERA</a></li>
-                        <li><a href="sevac.php">SEVAC</a></li>
-                        <li><a href="cuenta_publica.php">CUENTA PUBLICA</a></li>
-                        <li><a href="informe_anual.php">INFORME ANUAL DE ACTIVIDADES</a></li>
-                        <li><a href="programa_anual.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
+                        <li><a href="manteniminento.php">AVANCE DE GESTION FINANCIERA</a></li>
+                        <li><a href="manteniminento.php">SEVAC</a></li>
+                        <li><a href="manteniminento.php">CUENTA PUBLICA</a></li>
+                        <li><a href="manteniminento.php">INFORME ANUAL DE ACTIVIDADES</a></li>
+                        <li><a href="manteniminento.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
                     </ul>
                 </li>
-                <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
+                <li><a href="manteniminento.php">INFRAESTRUCTURA</a></li>
                 <li><a href="#">TRANSAPRENCIA</a>
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
@@ -75,35 +76,35 @@
             
           <br>
           <?php
-// Conectar a la base de datos usando tu archivo de configuración
-require_once('admin/db_config.php');
+            // Conectar a la base de datos usando tu archivo de configuración
+            require_once('admin/db_config.php');
 
-// Inicializa las variables
-$titulo = "";
-$nota = "";
+            // Inicializa las variables
+            $titulo = "";
+            $nota = "";
 
-// Recibe el parámetro "id" de la noticia seleccionada
-if (isset($_GET['id'])) {
-    $idnoticia = $_GET['id'];
+            // Recibe el parámetro "id" de la noticia seleccionada
+            if (isset($_GET['id'])) {
+                $idnoticia = $_GET['id'];
 
-    // Consulta SQL para obtener la noticia específica por su idnoticia
-    $sql = "SELECT imagen, titulo, nota_larga FROM noticias WHERE idnoticia = $idnoticia";
-    $result = $conn->query($sql);
+                // Consulta SQL para obtener la noticia específica por su idnoticia
+                $sql = "SELECT imagen, titulo, nota_larga FROM noticias WHERE idnoticia = $idnoticia";
+                $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $titulo = $row["titulo"];
-        $nota_larga = $row["nota_larga"];
-    } else {
-        echo "No se encontró la noticia.";
-    }
-} else {
-    echo "No se proporcionó un ID de noticia válido.";
-}
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    $titulo = $row["titulo"];
+                    $nota_larga = $row["nota_larga"];
+                } else {
+                    echo "No se encontró la noticia.";
+                }
+            } else {
+                echo "No se proporcionó un ID de noticia válido.";
+            }
 
-// Cierra la conexión a la base de datos
+            // Cierra la conexión a la base de datos
 
-?>
+            ?>
 
 <!-- Ahora, puedes mostrar la información de la noticia en tu HTML de manera más organizada -->
 
@@ -183,9 +184,9 @@ if (isset($_GET['id'])) {
         </div>
         <div class="footer-section">
             <h3>Enlaces de Interés</h3>
-            <a href="#">Enlace 1</a>
-            <a href="#">Enlace 2</a>
-            <a href="#">Enlace 3</a>
+            <a href="https://www.nayarit.gob.mx/">Gobierno de nayarit</a><br>
+            <a href="https://www.uan.edu.mx/">Universidad Autonoma de Nayarit</a><br>
+            <a href="https://www.facebook.com/FUNUAN.AC">Fundacion UAN</a><br>
         </div>
 
     </footer>

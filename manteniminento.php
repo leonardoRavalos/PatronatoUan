@@ -1,23 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Patronato - UAN</title>
-    <!-- CSS de Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/estilos.css" rel="stylesheet" media="screen">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Pagina en Mantenimiento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
-    <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+        .maintenance-container {
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        img {
+            max-width: 40%;
+            height: auto;
+        }
+    </style>
 </head>
+
 <body>
 <header>
         <nav>
@@ -63,46 +78,12 @@
             </ul>
         </nav>
     </header>
-<div class="padre">
-    <div class="hijo" style="padding: 15px;">
-        <div class="div-relative" style="max-width: 1300px;">
-
-            <div class="padre2 div-relative" style="padding: 0px; background-color: #00539F;">
-                <div class="trapecio-derecha" style="padding: 0px;"></div>
-                <div class="trapecio-izquierda" style="padding: 0px;"></div>
-                <h3 class="futura-titulo"
-                style="color: white; margin-top: 3px; margin-bottom: 6px; margin-left: 150px; margin-right: 3px;">CUENTA PUBLICA</h3>
-            </div>
-            <br>
-            <div class="padre">
-                <div class="hijo" style="padding: 15px;">
-                    <div class="div-relative">
-                        <div class="row">
-                            <div class="col-sm-6" style="padding-left: 40px; padding-right: 40px;">
-
-                                <div class="justificado">
-                                    <!--p class="futura-descripcion">
-                                        Informe del pago del entero del impuesto especial a Municipios
-                                    </p-->
-                                    <p class="futura-descripcion">
-                                        <div><div><div>El Patronato UAN pone a disposición de la ciudadanía la siguiente información:<br><div><font size="4"><br></font><div><br></div></div></div></div></div>                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
+<body>
+    <div class="maintenance-container">
+        <img src="https://eservicios2.aguascalientes.gob.mx/seguot/citaseguot/images/mantenimiento.png" alt="Mantenimiento">
     </div>
-</div>
-</div>
-
-</div>
-</div>
-</div>
-
-
+</body>
 <footer>
         <div class="footer-section">
             <h3>Contacto</h3>
@@ -126,23 +107,4 @@
         <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf">Aviso de Privacidad</a>
         <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf">Aviso de Privacidad Simplificado</a>
     </div>
-
-
-
-<!-- Librería jQuery requerida por los plugins de JavaScript -->
-<script src="https://code.jquery.com/jquery.js"></script>
-
-<!-- Todos los plugins JavaScript de Bootstrap (también puedes
-     incluir archivos JavaScript individuales de los únicos
-     plugins que utilices) -->
-     <script src="js/bootstrap.min.js"></script>
-
-<!--iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3712.5480507117063!2d-104.89567018442729!3d21.486242985752355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842736df471af73b%3A0x6635ee4b447cd432!2sPatronato+Uan!5e0!3m2!1sen!2smx!4v1529795878971"
-width="600"
-height="450"
-frameborder="0"
-style="border:0"
-allowfullscreen></iframe-->
-</body>
-
 </html>

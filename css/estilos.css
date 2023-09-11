@@ -76,6 +76,18 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    text-align: justify;
+  }
+  .padre3 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+  }
+
+  .padre4 {
+    display: flex;
+    justify-content: flex-start;
+    align-items:start;
   }
   
   .hijo {

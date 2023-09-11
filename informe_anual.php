@@ -27,6 +27,7 @@
                 <li><a href="#">EL PATRONATO</a>
                     <ul class="submenu">
                         <li><a href="quees.php">PATRONATO UAN</a></li>
+                        <li><a href="quehace.php">FUNCIÓN</a></li>
                         <li><a href="integran.php">INTEGRANTES</a></li>
                         <li><a href="marcolegal.php">MARCO LEGAL</a></li>
                         <li><a href="historia.php">HISTORIA</a></li>
@@ -114,9 +115,9 @@
         </div>
         <div class="footer-section">
             <h3>Enlaces de Interés</h3>
-            <a href="#">Enlace 1</a>
-            <a href="#">Enlace 2</a>
-            <a href="#">Enlace 3</a>
+            <a href="https://www.nayarit.gob.mx/">Gobierno de nayarit</a><br>
+            <a href="https://www.uan.edu.mx/">Universidad Autonoma de Nayarit</a><br>
+            <a href="https://www.facebook.com/FUNUAN.AC">Fundacion UAN</a><br>
         </div>
 
     </footer>

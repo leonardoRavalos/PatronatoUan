@@ -26,6 +26,7 @@
                 <li><a href="#">EL PATRONATO</a>
                     <ul class="submenu">
                         <li><a href="quees.php">PATRONATO UAN</a></li>
+                        <li><a href="quehace.php">FUNCIÓN</a></li>
                         <li><a href="integran.php">INTEGRANTES</a></li>
                         <li><a href="marcolegal.php">MARCO LEGAL</a></li>
                         <li><a href="historia.php">HISTORIA</a></li>
@@ -37,14 +38,14 @@
                 <li>
                     <a href="#">INFORMES</a>
                     <ul class="submenu">
-                        <li><a href="recaudacion.php">AVANCE DE GESTION FINANCIERA</a></li>
-                        <li><a href="sevac.php">SEVAC</a></li>
-                        <li><a href="cuenta_publica.php">CUENTA PUBLICA</a></li>
-                        <li><a href="informe_anual.php">INFORME ANUAL DE ACTIVIDADES</a></li>
-                        <li><a href="programa_anual.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
+                        <li><a href="manteniminento.php">AVANCE DE GESTION FINANCIERA</a></li>
+                        <li><a href="manteniminento.php">SEVAC</a></li>
+                        <li><a href="manteniminento.php">CUENTA PUBLICA</a></li>
+                        <li><a href="manteniminento.php">INFORME ANUAL DE ACTIVIDADES</a></li>
+                        <li><a href="manteniminento.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
                     </ul>
                 </li>
-                <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
+                <li><a href="manteniminento.php">INFRAESTRUCTURA</a></li>
                 <li><a href="#">TRANSAPRENCIA</a>
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
@@ -92,105 +93,58 @@
                                       <p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"="">La estructura administrativa se encarga de ejecutar los acuerdos tomados por el Órgano de Gobierno del Patronato. Si la naturaleza de los mismos refieren a obra pública y servicios relacionados con ésta, será necesario celebrar actos de apego a lo dispuesto por la Ley de Obra Pública del Estado de Nayarit.</p><p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"=""><br></p><p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"="">El Patronato instrumentará un procedimiento de contratación. La Ley de Obra Pública, obliga a las entidades públicas como el Patronato a contar con un registro de contratistas. Esto para invitar a las personas físicas y morales cuya información administrativa, financiera y legal le permita asegurar la viabilidad de la ejecución de obra pública con altos estándares de calidad.</p><p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"=""><br></p><p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"="">Por lo anterior, el Patronato&nbsp; pone a disposición de los interesados los seis formatos que deberán completar, así como proporcionar&nbsp; el original (para cotejo) y copia la siguiente documentación<span style="background-color: rgb(217, 217, 217);">&nbsp;:</span></p><p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"="">1. Acta constitutiva (si es persona moral), acta de nacimiento (si es persona física).</p><p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"="">2. Identificación oficial (INE, pasaporte vigente, cartilla de servicio militar) del representante legal.</p><p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"="">3. Curriculum vitae actualizado a la fecha de presentación.</p><p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"="">4. Cédula profesional del representante técnico de la empresa contratista.</p><p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"="">5. Declaración anual de los dos últimos ejercicios fiscales o en su defecto, estados financieros auditados por contador público autorizado por la Secretaría de Hacienda y Crédito Público (presentar cédula profesional y alta como dictaminador) con una antigüedad no mayor de seis meses a la fecha de presentación.</p><p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"="">6. Señalamiento de domicilio fiscal.</p><p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"="">7. Registro de la empresa contratista ante el IMSS e INFONAVIT.</p><p eurostile="" normal",="" arial;="" font-size:="" 18px;="" text-align:="" justify;"=""><br></p>    
                                       </p>
                                     </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="padre">
-                            <div class="hijo" style="padding: 0;">
-                                <div class="row">
-                                    <div class="col-md-1" style="padding-bottom: 15px;">
-                                        <div class="padre">
-                                          <a href="contratos/1_FORMATO_001_Y_007_SOLICITUD.pdf"
-                                          target="_blank" style="text-decoration: none;">
-                                              <div class="pdf text-pdf futura-descripcion">PDF</div>
-                                          </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-11" style="padding-bottom: 15px;">
-                                        <div class="padre2">
-                                            <div class="nota-pdf futura-descripcion">
-                                                SOLICITUD POR ESCRITO Y BAJO PROTESTA                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-1" style="padding-bottom: 15px;">
-                                        <div class="padre">
-                                          <a href="contratos/2_FORMATO_002_Y_003_FICHA_DE_REGISTRO_Y_CATALOGO_DE_MAQUINARIA.pdf"
-                                          target="_blank" style="text-decoration: none;">
-                                              <div class="pdf text-pdf futura-descripcion">PDF</div>
-                                          </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-11" style="padding-bottom: 15px;">
-                                        <div class="padre2">
-                                            <div class="nota-pdf futura-descripcion">
-                                                FICHA DE REGISTRO Y CATÁLOGO DE MAQUINARIA                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-1" style="padding-bottom: 15px;">
-                                        <div class="padre">
-                                          <a href="contratos/3_FORMATO_004_Y_005_DECLARACION_ART_31_Y_CATALOGO_DE_ESPECIALIDADES.pdf"
-                                          target="_blank" style="text-decoration: none;">
-                                              <div class="pdf text-pdf futura-descripcion">PDF</div>
-                                          </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-11" style="padding-bottom: 15px;">
-                                        <div class="padre2">
-                                            <div class="nota-pdf futura-descripcion">
-                                                DECLARACIÓN ART 31 Y CATÁLOGO DE ESPECIALIDADES                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-1" style="padding-bottom: 15px;">
-                                        <div class="padre">
-                                          <a href="contratos/Inscripcion_Padron_de_Contratistas_2023.pdf"
-                                          target="_blank" style="text-decoration: none;">
-                                              <div class="pdf text-pdf futura-descripcion">PDF</div>
-                                          </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-11" style="padding-bottom: 15px;">
-                                        <div class="padre2">
-                                            <div class="nota-pdf futura-descripcion">
-                                                REGISTRO DE CONTRATISTAS 2023                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-1" style="padding-bottom: 15px;">
-                                        <div class="padre">
-                                          <a href="contratos/REQUISITOS_REFRENDO_PADRON_DE_CONTRATISTAS_PATRONATO_2023.pdf"
-                                          target="_blank" style="text-decoration: none;">
-                                              <div class="pdf text-pdf futura-descripcion">PDF</div>
-                                          </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-11" style="padding-bottom: 15px;">
-                                        <div class="padre2">
-                                            <div class="nota-pdf futura-descripcion">
-                                                REGISTRO REFRENDO PADRÓN DE CONTRATISTAS 2023                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-1" style="padding-bottom: 15px;">
-                                        <div class="padre">
-                                          <a href="contratos/8._SOLO_REFRENDO_2023.pdf"
-                                          target="_blank" style="text-decoration: none;">
-                                              <div class="pdf text-pdf futura-descripcion">PDF</div>
-                                          </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-11" style="padding-bottom: 15px;">
-                                        <div class="padre2">
-                                            <div class="nota-pdf futura-descripcion">
-                                                SOLO EN REFRENDO                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
+                                    
+                          
                       </div>
+                      <div></div>
+                      <?php
+                        require_once('admin/db_config.php');
+
+                        // Consulta SQL para obtener los datos de la tabla formatos
+                        $sql = "SELECT f.idformato, f.archivo, f.titulo, sf.idseccion
+                                FROM formatos AS f
+                                JOIN secciones_formato AS sf ON f.seccion = sf.idseccion
+                                WHERE sf.idseccion = 2";
+
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $idformato = $row["idformato"];
+                                $archivo = $row["archivo"];
+                                $descripcion = $row["titulo"];
+
+                                // Generar el código HTML para cada elemento
+                                echo '<div class="col-sm-6">';
+                                echo '<div class="padre4">';
+                                echo '<div class="hijo" style="padding: 0;">';
+                                echo '<div class="row">';
+                                echo '<div class="col-md-3" style="padding-bottom: 15px;">';
+                                echo '<div class="padre4">';
+                                echo '<a href="' . $archivo . '" target="_blank" style="text-decoration: none;">';
+                                echo '<div>';
+                                echo '<img class="pdf-image" src="imagenes/pdf.png">';
+                                echo '</div>';
+                                echo '</a>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '<div class="col-md-9" style="padding-bottom: 15px;">';
+                                echo '<div class="padre3">';
+                                echo '<div class="nota-pdf futura-descripcion">' . $descripcion . '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                            }
+                        } else {
+                            echo "No se encontraron registros en la tabla formatos para la sección 1.";
+                        }
+
+                        // Cierra la conexión a la base de datos
+                        $conn->close();
+                        ?>
                   </div>
               </div>
             </div>
@@ -213,9 +167,9 @@
         </div>
         <div class="footer-section">
             <h3>Enlaces de Interés</h3>
-            <a href="#">Enlace 1</a>
-            <a href="#">Enlace 2</a>
-            <a href="#">Enlace 3</a>
+            <a href="https://www.nayarit.gob.mx/">Gobierno de nayarit</a><br>
+            <a href="https://www.uan.edu.mx/">Universidad Autonoma de Nayarit</a><br>
+            <a href="https://www.facebook.com/FUNUAN.AC">Fundacion UAN</a><br>
         </div>
 
     </footer>

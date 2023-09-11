@@ -26,6 +26,7 @@
                 <li><a href="#">EL PATRONATO</a>
                     <ul class="submenu">
                         <li><a href="quees.php">PATRONATO UAN</a></li>
+                        <li><a href="quehace.php">FUNCIÓN</a></li>
                         <li><a href="integran.php">INTEGRANTES</a></li>
                         <li><a href="marcolegal.php">MARCO LEGAL</a></li>
                         <li><a href="historia.php">HISTORIA</a></li>
@@ -37,14 +38,14 @@
                 <li>
                     <a href="#">INFORMES</a>
                     <ul class="submenu">
-                        <li><a href="recaudacion.php">AVANCE DE GESTION FINANCIERA</a></li>
-                        <li><a href="sevac.php">SEVAC</a></li>
-                        <li><a href="cuenta_publica.php">CUENTA PUBLICA</a></li>
-                        <li><a href="informe_anual.php">INFORME ANUAL DE ACTIVIDADES</a></li>
-                        <li><a href="programa_anual.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
+                        <li><a href="manteniminento.php">AVANCE DE GESTION FINANCIERA</a></li>
+                        <li><a href="manteniminento.php">SEVAC</a></li>
+                        <li><a href="manteniminento.php">CUENTA PUBLICA</a></li>
+                        <li><a href="manteniminento.php">INFORME ANUAL DE ACTIVIDADES</a></li>
+                        <li><a href="manteniminento.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
                     </ul>
                 </li>
-                <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
+                <li><a href="manteniminento.php">INFRAESTRUCTURA</a></li>
                 <li><a href="#">TRANSAPRENCIA</a>
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>

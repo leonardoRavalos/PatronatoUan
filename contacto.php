@@ -31,6 +31,7 @@
                 <li><a href="#">EL PATRONATO</a>
                     <ul class="submenu">
                         <li><a href="quees.php">PATRONATO UAN</a></li>
+                        <li><a href="quehace.php">FUNCIÓN</a></li>
                         <li><a href="integran.php">INTEGRANTES</a></li>
                         <li><a href="marcolegal.php">MARCO LEGAL</a></li>
                         <li><a href="historia.php">HISTORIA</a></li>
@@ -42,14 +43,14 @@
                 <li>
                     <a href="#">INFORMES</a>
                     <ul class="submenu">
-                        <li><a href="recaudacion.php">AVANCE DE GESTION FINANCIERA</a></li>
-                        <li><a href="sevac.php">SEVAC</a></li>
-                        <li><a href="cuenta_publica.php">CUENTA PUBLICA</a></li>
-                        <li><a href="informe_anual.php">INFORME ANUAL DE ACTIVIDADES</a></li>
-                        <li><a href="programa_anual.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
+                        <li><a href="manteniminento.php">AVANCE DE GESTION FINANCIERA</a></li>
+                        <li><a href="manteniminento.php">SEVAC</a></li>
+                        <li><a href="manteniminento.php">CUENTA PUBLICA</a></li>
+                        <li><a href="manteniminento.php">INFORME ANUAL DE ACTIVIDADES</a></li>
+                        <li><a href="manteniminento.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
                     </ul>
                 </li>
-                <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
+                <li><a href="manteniminento.php">INFRAESTRUCTURA</a></li>
                 <li><a href="#">TRANSAPRENCIA</a>
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
@@ -116,60 +117,28 @@
 </div>
 <br>
 
-<div class="padre">
-    <div class="hijo" style="padding: 0px;">
-        <a href="https://twitter.com/PatronatoUan"><i class="fa fa-twitter" style="font-size:24px; padding: 5px; color: black;"></i></a>
-        <a href="https://www.facebook.com/Patronato-UAN-200221974061669/?ref=settings"><i class="fa fa-facebook" style="font-size:24px; padding: 5px; color: black;"></i></a>
-        <a href="https://www.youtube.com/channel/UCjCu5_ROMAPCEDodp3tsb7Q?disable_polymer=true"><i class="fa fa-youtube-play" style="font-size:24px; padding: 5px; color: black;"></i></a>
-        <a href="https://www.instagram.com/patronato_uan/"><i class="fa fa-instagram" style="font-size:24px; padding: 5px; color: black;"></i></a>
-    </div>
-</div>
-
-
-
-
-    <div class="padre" style="background-color:#0F57A9; color: white;">
-        <div class="hijo" style="padding: 0;">
-            <div class="padre" style="padding: 0;">
-                <div class="hijo futura-descripcion" style="padding: 2px;">
-                    administracion@patronatouan.com                </div>
-            </div>
-            <div class="padre" style="padding: 0;">
-                <div class="hijo futura-descripcion" style="padding: 2px;">
-                    Tel:   (311) 2 14 38 98                </div>
-            </div>
+<footer>
+        <div class="footer-section">
+            <h3>Contacto</h3>
+            <p class="contact-info">administracion@patronatouan.com</p>
+            <p class="contact-info">Tel:   (311) 2 14 38 98</p>
         </div>
-    </div>
-
-
-
-    <div class="padre tamaño-12 negritas" style="background-color:#FFFFFF; color: #000000;">
-        <div class="hijo" style="padding: 0;">
-            <div class="padre" style="padding: 0;">
-                <div class="hijo futura-descripcion" style="padding: 0;">
-                    <br>
-                    Country Club No. 98 Col. Versalles.                </div>
-            </div>
-            <div class="padre" style="padding: 0;">
-                <div class="hijo futura-descripcion" style="padding: 0;">
-                                    <a style="color:#0c0036;" href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf" target="_blank">Aviso de privacidad integral</a>  &nbsp
-                                        <a style="color:#0c0036;" href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf" target="_blank">Aviso de privacidad simplificado</a>  &nbsp
-                     
-                </div>
-            </div>
-            <br>
-            <div class="padre" style="padding: 0;">
-                <div class="hijo futura-descripcion" style="padding: 0;">
-                    Patronato para Administrar el Impuesto Especial
-                </div>
-            </div>
-            <div class="padre" style="padding: 0;">
-                <div class="hijo futura-descripcion" style="padding: 0; padding-bottom: 15px;">
-                    Destinado a la Universidad Autónoma de Nayarit
-                    <br>
-                </div>
-            </div>
+        <div class="footer-section">
+            <h3>Dirección</h3>
+            <p class="contact-info">Country Club No. 98 Col. Versalles.</p>
         </div>
+        <div class="footer-section">
+            <h3>Enlaces de Interés</h3>
+            <a href="https://www.nayarit.gob.mx/">Gobierno de nayarit</a><br>
+            <a href="https://www.uan.edu.mx/">Universidad Autonoma de Nayarit</a><br>
+            <a href="https://www.facebook.com/FUNUAN.AC">Fundacion UAN</a><br>
+        </div>
+
+    </footer>
+
+    <div class="privacy-links">
+        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf">Aviso de Privacidad</a>
+        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf">Aviso de Privacidad Simplificado</a>
     </div>
 
     
