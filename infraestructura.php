@@ -37,11 +37,11 @@
                 <li>
                     <a href="#">INFORMES</a>
                     <ul class="submenu">
-                        <li><a href="recaudacion.php">AVANCE DE GESTION FINANCIERA</a></li>
-                        <li><a href="sevac.php">SEVAC</a></li>
-                        <li><a href="cuenta_publica.php">CUENTA PUBLICA</a></li>
-                        <li><a href="informe_anual.php">INFORME ANUAL DE ACTIVIDADES</a></li>
-                        <li><a href="programa_anual.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
+                        <li><a href="manteniminento.php">AVANCE DE GESTION FINANCIERA</a></li>
+                        <li><a href="manteniminento.php">SEVAC</a></li>
+                        <li><a href="manteniminento.php">CUENTA PUBLICA</a></li>
+                        <li><a href="manteniminento.php">INFORME ANUAL DE ACTIVIDADES</a></li>
+                        <li><a href="manteniminento.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
                     </ul>
                 </li>
                 <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
@@ -94,7 +94,57 @@
             </div>
             <br>
             <br>
-            
+            <div class="container">
+        <h2>Proyectos</h2>
+        <?php
+require_once('admin/db_config.php');
+
+// Consulta SQL para obtener las categorías y los proyectos de la base de datos
+$sql = "SELECT categorias.idcategoria, categorias.categoria, proyectos.nombre, proyectos.imagen, proyectos.descripcion
+        FROM categorias 
+        LEFT JOIN proyectos ON categorias.idcategoria = proyectos.categoria"; // Asegúrate de ajustar la columna de unión, que asumimos como "categoria" en este caso
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Inicializa un arreglo para almacenar todas las categorías
+    $categorias = array();
+
+    while ($row = $result->fetch_assoc()) {
+        $categorias[$row['idcategoria']]['categoria'] = $row['categoria']; // Almacena la categoría
+        $categorias[$row['idcategoria']]['proyectos'][] = array(
+            'nombre' => $row['nombre'], // Almacena el nombre del proyecto
+            'imagen' => $row['imagen'],
+            'descripcion' => $row['descripcion'], // Almacena la URL de la imagen del proyecto
+        );
+
+        // Genera un enlace para cada categoría
+        echo '<div class="list-item">';
+        echo '    <span style="cursor:pointer;" data-toggle="collapse" href="#collapse2' . $row['idcategoria'] . '" aria-expanded="false" aria-controls="collapse">';
+        echo '        <h4>' . $row['categoria'] . '</h4>';
+        echo '    </span>';
+        echo '    <div class="collapse" id="collapse2' . $row['idcategoria'] . '" style="cursor:pointer;">';
+        echo '        <div class="list-group">';
+        
+        // Muestra la imagen en lugar de la descripción
+        foreach ($categorias[$row['idcategoria']]['proyectos'] as $proyecto) {
+            echo '            <img src="' . $proyecto['imagen'] . '" alt="' . $proyecto['nombre'] . '" width="300">';
+            echo '<h4>' . $proyecto['descripcion'] . '</h4>';
+        }
+        
+        echo '        </div>';
+        echo '    </div>';
+        echo '</div>';
+    }
+
+    // Cierra la conexión a la base de datos
+    $conn->close();
+} else {
+    echo "No se encontraron categorías o proyectos.";
+}
+?>
+
+    </div>
 
         </div>
     </div>
@@ -134,7 +184,26 @@
 <!-- Todos los plugins JavaScript de Bootstrap (también puedes
      incluir archivos JavaScript individuales de los únicos
      plugins que utilices) -->
-<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>}
+<script>
+    // Agrega un evento de clic a todos los elementos con la clase "futura-descripcion"
+    const elementos = document.querySelectorAll('.futura-descripcion');
+
+    elementos.forEach((elemento) => {
+        elemento.addEventListener('click', () => {
+            // Encuentra el elemento de descripción de obra correspondiente
+            const descripcionObra = elemento.querySelector('.descripcion-obra');
+
+            // Alternar la visibilidad de la descripción de obra
+            if (descripcionObra.style.display === 'none' || descripcionObra.style.display === '') {
+                descripcionObra.style.display = 'block';
+            } else {
+                descripcionObra.style.display = 'none';
+            }
+        });
+    });
+</script>
+
 
 <!--iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3712.5480507117063!2d-104.89567018442729!3d21.486242985752355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842736df471af73b%3A0x6635ee4b447cd432!2sPatronato+Uan!5e0!3m2!1sen!2smx!4v1529795878971"
 width="600"

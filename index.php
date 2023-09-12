@@ -34,7 +34,7 @@
                         <li><a href="manteniminento.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
                     </ul>
                 </li>
-                <li><a href="manteniminento.php">INFRAESTRUCTURA</a></li>
+                <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
                 <li><a href="#">TRANSAPRENCIA</a>
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
@@ -54,31 +54,41 @@
 
     <div class="banner-carousel">
         <div class="banner-slide" style="background-image: url('./uploads/cover/DELFIN_2023.jpg');">
-            <button class="carousel-button" id="prevSlide">Anterior</button>
-            <button class="carousel-button" id="nextSlide">Siguiente</button>
+        </div>
+        <div class="carousel-buttons">
+            <button id="prev-button" class="carousel-button">Anterior</button>
+            <button id="next-button" class="carousel-button">Siguiente</button>
         </div>
         <div class="banner-slide" style="background-image: url('./uploads/cover/SEO.png');">
-            <button class="carousel-button" id="prevSlide">Anterior</button>
-            <button class="carousel-button" id="nextSlide">Siguiente</button>
+        </div>
+        <div class="carousel-buttons">
+            <button id="prev-button" class="carousel-button">Anterior</button>
+            <button id="next-button" class="carousel-button">Siguiente</button>
         </div>
         <div class="banner-slide" style="background-image: url('./uploads/cover/IMG_8596.png');">
-            <button class="carousel-button" id="prevSlide">Anterior</button>
-            <button class="carousel-button" id="nextSlide">Siguiente</button>
+        </div>
+        <div class="carousel-buttons">
+            <button id="prev-button" class="carousel-button">Anterior</button>
+            <button id="next-button" class="carousel-button">Siguiente</button>
         </div>
         <div class="banner-slide" style="background-image: url('./uploads/cover/IMG_0464.png');">
-            <button class="carousel-button" id="prevSlide">Anterior</button>
-            <button class="carousel-button" id="nextSlide">Siguiente</button>
         </div>
         <div class="banner-slide" style="background-image: url('./uploads/cover/3.jpg');">
-            <button class="carousel-button" id="prevSlide">Anterior</button>
-            <button class="carousel-button" id="nextSlide">Siguiente</button>
+        </div>
+        <div class="carousel-buttons">
+            <button id="prev-button" class="carousel-button">Anterior</button>
+            <button id="next-button" class="carousel-button">Siguiente</button>
         </div>
     </div>
 
     <div class="centered-text">
-        <h2><span class="gray-text">Patronato</span><span class="green-text">Uan</span></h2>
-        <p class="gray-text">Somos fortaleza institucional para la UAN</p>
-    </div>
+    <img src="images/LOGO-01.png" alt="Logo Patronato UAN" class="logo-img">
+</div>
+<br>
+<br>
+<br>
+<br>
+
 
     <section class="news-section">
         <h2>Noticias</h2>
@@ -141,42 +151,57 @@
         <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf">Aviso de Privacidad Simplificado</a>
     </div>
     <script>
-  // Obtenemos todas las diapositivas del carrusel
-  var slides = document.querySelectorAll(".banner-slide");
-  var currentSlide = 0;
-  var interval = 3000; // Intervalo en milisegundos (3 segundos en este caso)
+  // Obtén todas las diapositivas del carrusel
+var slides = document.querySelectorAll(".banner-slide");
+var currentSlide = 0;
+var interval = 3000; // Intervalo en milisegundos (3 segundos en este caso)
 
-  function showSlide(index) {
-    // Ocultamos todas las diapositivas
-    for (var i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-
-    // Mostramos la diapositiva actual
-    slides[index].style.display = "block";
+function showSlide(index) {
+  // Oculta todas las diapositivas
+  for (var i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
   }
 
-  function nextSlide() {
-    currentSlide++;
-    if (currentSlide >= slides.length) {
-      currentSlide = 0;
-    }
-    showSlide(currentSlide);
-  }
+  // Muestra la diapositiva actual
+  slides[index].style.display = "block";
+}
 
-  function prevSlide() {
-    currentSlide--;
-    if (currentSlide < 0) {
-      currentSlide = slides.length - 1;
-    }
-    showSlide(currentSlide);
+function nextSlide() {
+  currentSlide++;
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
   }
-
-  // Mostrar la primera diapositiva al cargar la página
   showSlide(currentSlide);
+}
 
-  // Configurar el cambio automático de diapositivas
-  setInterval(nextSlide, interval);
+function prevSlide() {
+  currentSlide--;
+  if (currentSlide < 0) {
+    currentSlide = slides.length - 1;
+  }
+  showSlide(currentSlide);
+}
+
+// Muestra la primera diapositiva al cargar la página
+showSlide(currentSlide);
+
+// Configura el cambio automático de diapositivas
+var autoSlideInterval = setInterval(nextSlide, interval);
+
+// Agrega eventos click a los botones
+document.getElementById("prev-button").addEventListener("click", function () {
+  clearInterval(autoSlideInterval); // Detiene el cambio automático
+  prevSlide(); // Cambia a la diapositiva anterior
+  autoSlideInterval = setInterval(nextSlide, interval); // Reinicia el cambio automático
+});
+
+document.getElementById("next-button").addEventListener("click", function () {
+  clearInterval(autoSlideInterval); // Detiene el cambio automático
+  nextSlide(); // Cambia a la diapositiva siguiente
+  autoSlideInterval = setInterval(nextSlide, interval); // Reinicia el cambio automático
+});
+
+
 </script>
 </body>
 </html>

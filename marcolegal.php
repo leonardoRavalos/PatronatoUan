@@ -45,7 +45,7 @@
                         <li><a href="manteniminento.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
                     </ul>
                 </li>
-                <li><a href="manteniminento.php">INFRAESTRUCTURA</a></li>
+                <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
                 <li><a href="#">TRANSAPRENCIA</a>
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
@@ -107,12 +107,12 @@
 
                                         // Generar el código HTML para cada elemento
                                         echo '<div class="col-sm-6">';
-                                        echo '<div class="padre">';
-                                        echo '<div class="hijo" style="padding: 0;">';
+                                        echo '<div class="padre4">';
+                                        echo '<div class="hijo" style="padding: 0;" >';
                                         echo '<div class="row">';
                                         echo '<div class="col-md-3" style="padding-bottom: 15px;">';
-                                        echo '<div class="padre">';
-                                        echo '<a href="' . $documento . '" target="_blank" style="text-decoration: none;">';
+                                        echo '<div class="padre2">';
+                                        echo '<a href="' . $documento . '" target="_blank" style="text-decoration: none; align-item: center;">';
                                         echo '<div>';
                                         echo '<img class="pdf-image" src="imagenes/pdf.png">';
                                         echo '</div>';
