@@ -69,42 +69,102 @@
             <li role="presentation" class="active"><a href="infraestructura.php">Nuevo Proyecto</a> </li>
             <li role="presentation" ><a href="proyectos.php">Ver Proyectos</a> </li>
             <li role="presentation" ><a href="categorias.php">Categorías</a> </li>
-            <li role="presentation" ><a href="videos.php">Videos</a> </li>
-            <li role="presentation" ><a href="portada.php">Foto de Portada</a> </li>
         </ul>
     </div>
 
-    <h1 class="page-header">Nuevo proyecto</h1 class="page-header">
-    <form id="frmProyecto" enctype="multipart/form-data">
-        <div class="col col-lg-8 col-md-8 col-sm-12 col-xs-12">
-            <div class="form-group">
-                <label>Nombre del proyecto</label>
-                <input type="text" class="form-control" name="nombre" id="nombre">
-                <br/>
-                <label>Categoría</label>
-                <select name="id_categoria" id="id_categoria" class="form-control"></select>
-                <br/>
+    <?php
+require_once('db_config.php');
 
-                <label>Descripción</label>
-                <br>
-                <textarea name="descripcion" id="descripcion"></textarea>
-                <br/>
+// Consulta SQL para obtener las categorías de la base de datos
+$sql_categorias = "SELECT idcategoria, categoria FROM categorias";
+$result_categorias = $conn->query($sql_categorias);
 
-                <h3>Seleccionar imagen</h3>
-                <input type="file" id="imagen" name="imagen">
+if ($result_categorias->num_rows > 0) {
+    $categorias = array();
 
-                <br/>
-                <br/>
+    while ($row_categoria = $result_categorias->fetch_assoc()) {
+        $categorias[$row_categoria['idcategoria']] = $row_categoria['categoria'];
+    }
 
-                <button type="submit" class="btn btn-primary" id="btnGuardar"><span
-                            class="glyphicon glyphicon-floppy-disk"></span> Guardar
-                </button>
+    // Procesa el formulario para agregar nuevos proyectos
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nombre_proyecto = $_POST["nombre_proyecto"];
+        $id_categoria = $_POST["id_categoria"];
+        $descripcion = $_POST["descripcion"];
+
+        // Genera un nombre de archivo único para la imagen
+        $imagen_nombre = uniqid() . "_" . $_FILES["imagen"]["name"];
+        $ruta_carpeta_destino = "carpeta_destino/";
+        $ruta_imagen = $ruta_carpeta_destino . $imagen_nombre;
+
+        // Verifica si la carpeta de destino existe, y si no, créala
+        if (!is_dir($ruta_carpeta_destino)) {
+            mkdir($ruta_carpeta_destino, 0755, true);
+        }
+
+        // Mueve la imagen al directorio de destino
+        move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta_imagen);
+
+        $sql_insert_proyecto = "INSERT INTO proyectos (nombre, categoria, descripcion, imagen) VALUES ('$nombre_proyecto', $id_categoria, '$descripcion', '$ruta_imagen')";
+
+        if ($conn->query($sql_insert_proyecto) === TRUE) {
+            echo "El proyecto se ha agregado correctamente.";
+        } else {
+            echo "Error al agregar el proyecto: " . $conn->error;
+        }
+    }
+    ?>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Nuevo proyecto</title>
+    </head>
+    <body>
+        <h1 class="page-header">Nuevo proyecto</h1>
+        <form id="frmNuevoProyecto" enctype="multipart/form-data" method="post" action="">
+            <div class="col col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label>Nombre del proyecto</label>
+                    <input type="text" class="form-control" name="nombre_proyecto" id="nombre_proyecto">
+                    <br/>
+
+                    <label>Categoría</label>
+                    <select name="id_categoria" id="id_categoria" class="form-control">
+                        <?php
+                        foreach ($categorias as $id => $categoria) {
+                            echo "<option value='$id'>$categoria</option>";
+                        }
+                        ?>
+                    </select>
+                    <br/>
+
+                    <label>Descripción</label>
+                    <br>
+                    <textarea name="descripcion" id="descripcion"></textarea>
+                    <br/>
+
+                    <h3>Seleccionar imagen</h3>
+                    <input type="file" id="imagen" name="imagen">
+                    <br/><br/>
+
+                    <button type="submit" class="btn btn-primary" id="btnGuardar"><span
+                                class="glyphicon glyphicon-floppy-disk"></span> Guardar
+                    </button>
+                </div>
             </div>
-        </div>
+        </form>
+    </body>
+    </html>
+    <?php
+} else {
+    echo "No se encontraron categorías.";
+}
 
-    </form>
+// Cierra la conexión a la base de datos
+$conn->close();
+?>
 
-</div>
 
 </body>
 

@@ -157,45 +157,68 @@
                 <h2>PADRÓN DE PROVEEDORES</h2>
 
                 <br>
-                <table border="1" width="80%" cellspacing="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#808080">
-                    <tr>
+                <?php
+require_once('db_config.php');
 
-                        <td width="22%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF">Sección</font></b>
-                        </td>
+// Consulta SQL para obtener el valor de la sección
+$sqlSeccion = "SELECT seccion FROM secciones_formato WHERE idseccion = 1";
+$resultSeccion = $conn->query($sqlSeccion);
 
-                        <td width="20%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF">Archivo</font></b>
-                        </td>
+// Verifica si se encontró la sección
+if ($resultSeccion->num_rows > 0) {
+    $rowSeccion = $resultSeccion->fetch_assoc();
+    $seccion = $rowSeccion["seccion"];
 
-                        <td width="50%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF">Titulo</font></b>
-                        </td>
-                        <td width="20%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF"></font></b>
-                        </td>
-                    </tr>
+    // Consulta SQL para obtener los datos de la tabla formatos
+    $sqlFormatos = "SELECT f.idformato, f.archivo, f.titulo
+                    FROM formatos AS f
+                    WHERE f.seccion = 1"; // Usamos la variable $seccion aquí
 
-                    
-      <tr>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;PADRÓN DE PROVEEDORES</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;PADRON_DE_PROVEEDORES_2023-02.pdf</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;DESCARGA PADRÓN DE PROVEEDORES</font></td>
-      <td height="5" bgcolor="#dcf4b2" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=3">Modificar</a></font></td>
+    $resultFormatos = $conn->query($sqlFormatos);
 
-   
+    if ($resultFormatos->num_rows > 0) {
+        while ($row = $resultFormatos->fetch_assoc()) {
+            $idformato = $row["idformato"];
+            $archivo = $row["archivo"];
+            $descripcion = $row["titulo"];
 
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;PADRÓN DE PROVEEDORES</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;<font size="5">Formato de inscripción al padrón de proveedores&nbsp;</font></font></td>
-      <td height="5" bgcolor="#FFFFFF" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=13">Modificar</a></font></td>
+            // Generar el código HTML para cada elemento
+            echo '<table border="1" width="80%" cellspacing="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#808080">';
+            echo '<tr>';
+            echo '<td width="22%" align="center" bgcolor="#1356A4"><b>';
+            echo '<font face="Arial" size="2" color="#FFFFFF">Sección</font></b>';
+            echo '</td>';
+            echo '<td width="20%" align="center" bgcolor="#1356A4"><b>';
+            echo '<font face="Arial" size="2" color="#FFFFFF">Archivo</font></b>';
+            echo '</td>';
+            echo '<td width="50%" align="center" bgcolor="#1356A4"><b>';
+            echo '<font face="Arial" size="2" color="#FFFFFF">Título</font></b>';
+            echo '</td>';
+            echo '<td width="20%" align="center" bgcolor="#1356A4"><b>';
+            echo '<font face="Arial" size="2" color="#FFFFFF"></font></b>';
+            echo '</td>';
+            echo '</tr>';
 
-   
+            echo '<tr>';
+            echo '<td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;' . $seccion . '</font></td>';
+            
+            echo '<td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;' . $archivo . '</font></td>';
+            echo '<td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;' . $descripcion . '</font></td>';
+            echo '<td height="5" bgcolor="#dcf4b2" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=' . $idformato . '">Modificar</a></font></td>';
+            echo '</tr>';
 
-    </tr>
-                </table>
+            echo '</table>';
+        }
+    } else {
+        echo "No se encontraron registros en la tabla formatos para la sección 1.";
+    }
+} else {
+    echo "No se encontró la sección con idseccion igual a 1.";
+}
+
+// Cierra la conexión a la base de datos
+?>
+
 
                 <br>
                 <br>
@@ -203,90 +226,69 @@
 
                 <br>
 
-                <table border="1" width="80%" cellspacing="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#808080">
-                    <tr>
+                <?php
+                require_once('db_config.php');
 
-                        <td width="22%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF">Sección</font></b>
-                        </td>
+                // Consulta SQL para obtener el valor de la sección
+                $sqlSeccion = "SELECT seccion FROM secciones_formato WHERE idseccion = 2";
+                $resultSeccion = $conn->query($sqlSeccion);
 
-                        <td width="20%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF">Archivo</font></b>
-                        </td>
+                // Verifica si se encontró la sección
+                if ($resultSeccion->num_rows > 0) {
+                    $rowSeccion = $resultSeccion->fetch_assoc();
+                    $seccion = $rowSeccion["seccion"];
 
-                        <td width="50%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF">Titulo</font></b>
-                        </td>
-                        <td width="20%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF"></font></b>
-                        </td>
-                    </tr>
+                    // Generar el código HTML para la fila de títulos
+                    echo '<table border="1" width="80%" cellspacing="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#808080">';
+                    echo '<tr>';
+                    echo '<td width="22%" align="center" bgcolor="#1356A4"><b>';
+                    echo '<font face="Arial" size="2" color="#FFFFFF">Sección</font></b>';
+                    echo '</td>';
+                    echo '<td width="20%" align="center" bgcolor="#1356A4"><b>';
+                    echo '<font face="Arial" size="2" color="#FFFFFF">Archivo</font></b>';
+                    echo '</td>';
+                    echo '<td width="50%" align="center" bgcolor="#1356A4"><b>';
+                    echo '<font face="Arial" size="2" color="#FFFFFF">Título</font></b>';
+                    echo '</td>';
+                    echo '<td width="20%" align="center" bgcolor="#1356A4"><b>';
+                    echo '<font face="Arial" size="2" color="#FFFFFF"></font></b>';
+                    echo '</td>';
+                    echo '</tr>';
 
-                    
-      <tr>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;PADRÓN DE CONTRATISTAS</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;1_FORMATO_001_Y_007_SOLICITUD.pdf</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;SOLICITUD POR ESCRITO Y BAJO PROTESTA</font></td>
-      <td height="5" bgcolor="#dcf4b2" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=4">Modificar</a></font></td>
+                    // Consulta SQL para obtener los datos de la tabla formatos
+                    $sqlFormatos = "SELECT f.idformato, f.archivo, f.titulo
+                                    FROM formatos AS f
+                                    WHERE f.seccion = 2"; // Usamos la variable $seccion aquí
 
-   
+                    $resultFormatos = $conn->query($sqlFormatos);
 
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;PADRÓN DE CONTRATISTAS</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;2_FORMATO_002_Y_003_FICHA_DE_REGISTRO_Y_CATALOGO_DE_MAQUINARIA.pdf</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;FICHA DE REGISTRO Y CATÁLOGO DE MAQUINARIA</font></td>
-      <td height="5" bgcolor="#FFFFFF" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=5">Modificar</a></font></td>
+                    if ($resultFormatos->num_rows > 0) {
+                        while ($row = $resultFormatos->fetch_assoc()) {
+                            $idformato = $row["idformato"];
+                            $archivo = $row["archivo"];
+                            $descripcion = $row["titulo"];
 
-   
+                            // Generar el código HTML para cada elemento de datos
+                            echo '<tr>';
+                            echo '<td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;' . $seccion . '</font></td>';
+                            echo '<td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;' . $archivo . '</font></td>';
+                            echo '<td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;' . $descripcion . '</font></td>';
+                            echo '<td height="5" bgcolor="#dcf4b2" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=' . $idformato . '">Modificar</a></font></td>';
+                            echo '</tr>';
+                        }
+                    } else {
+                        echo "No se encontraron registros en la tabla formatos para la sección 1.";
+                    }
 
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;PADRÓN DE CONTRATISTAS</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;3_FORMATO_004_Y_005_DECLARACION_ART_31_Y_CATALOGO_DE_ESPECIALIDADES.pdf</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;DECLARACIÓN ART 31 Y CATÁLOGO DE ESPECIALIDADES</font></td>
-      <td height="5" bgcolor="#dcf4b2" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=6">Modificar</a></font></td>
+                    // Cierra la tabla
+                    echo '</table>';
+                } else {
+                    echo "No se encontró la sección con idseccion igual a 1.";
+                }
 
-   
-
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;PADRÓN DE CONTRATISTAS</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;Inscripcion_Padron_de_Contratistas_2023.pdf</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;REGISTRO DE CONTRATISTAS 2023</font></td>
-      <td height="5" bgcolor="#FFFFFF" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=7">Modificar</a></font></td>
-
-   
-
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;PADRÓN DE CONTRATISTAS</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;REQUISITOS_REFRENDO_PADRON_DE_CONTRATISTAS_PATRONATO_2023.pdf</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;REGISTRO REFRENDO PADRÓN DE CONTRATISTAS 2023</font></td>
-      <td height="5" bgcolor="#dcf4b2" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=8">Modificar</a></font></td>
-
-   
-
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;PADRÓN DE CONTRATISTAS</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;8._SOLO_REFRENDO_2023.pdf</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;SOLO EN REFRENDO</font></td>
-      <td height="5" bgcolor="#FFFFFF" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=9">Modificar</a></font></td>
-
-   
-
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;PADRÓN DE CONTRATISTAS</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;Formatos de inscripción al padrón de contratistas</font></td>
-      <td height="5" bgcolor="#dcf4b2" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=14">Modificar</a></font></td>
-
-   
-
-    </tr>
-                </table>
+                // Cierra la conexión a la base de datos
+                $conn->close();
+                ?>
 
 
                 <br>
@@ -323,113 +325,11 @@
         
                 <br>
                 <br>
-                <h2>INFORMES</h2>
+                
 
                 <br>
 
-                <table border="1" width="70%" cellspacing="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#808080">
-                    <tr>
-
-                        <td width="22%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF">Sección</font></b>
-                        </td>
-                        <td width="25%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF">Contenido</font></b>
-                        </td>
-                        <td width="25%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF">Archivo</font></b>
-                        </td>
-                        <td width="25%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF">Titulo</font></b>
-                        </td>
         
-                        <td width="20%" align="center" bgcolor="#1356A4"><b>
-                         <font face="Arial" size="2" color="#FFFFFF"></font></b>
-                        </td>
-                    </tr>
-
-                    
-      <tr>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;RECAUDACIÓN MUNICIPAL</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;iv>El Patronato UAN pone a disposición de la ciudadanía la siguiente...</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;</font></td>
-      <td height="5" bgcolor="#dcf4b2" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=12">Modificar</a></font></td>
-
-   
-
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;RECAUDACIÓN MUNICIPAL</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;...</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;PRIMER_TRIMESTRE.pdf</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;Primer trimestre</font></td>
-      <td height="5" bgcolor="#FFFFFF" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=17">Modificar</a></font></td>
-
-   
-
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;RECAUDACIÓN MUNICIPAL</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;...</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;SEGUNDO_TRIMESTRE.pdf</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;Segundo Trimestre</font></td>
-      <td height="5" bgcolor="#dcf4b2" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=18">Modificar</a></font></td>
-
-   
-
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;RECAUDACIÓN MUNICIPAL</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;...</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;TERCER_TRIMESTRE.pdf</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;Tercer trimestre</font></td>
-      <td height="5" bgcolor="#FFFFFF" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=19">Modificar</a></font></td>
-
-   
-
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;RECAUDACIÓN MUNICIPAL</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;...</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;A.1.1._Plan_de_Cuentas.pdf</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;SEVAC Cuarto Trimestre 2018</font></td>
-      <td height="5" bgcolor="#dcf4b2" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=20">Modificar</a></font></td>
-
-   
-
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;RECAUDACIÓN MUNICIPAL</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;...</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;A.1.1._Plan_de_Cuentas.pdf</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;</font></td>
-      <td height="5" bgcolor="#FFFFFF" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=21">Modificar</a></font></td>
-
-   
-
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;RECAUDACIÓN MUNICIPAL</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;...</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;7._REQUISITOS_REFRENDO_PADRON_DE_CONTRATISTAS_PATRONATO_2023.pdf</font></td>
-      <td height="5" bgcolor="#dcf4b2"><font face="Arial" size="2">&nbsp;REQUISITOS REFRENDO</font></td>
-      <td height="5" bgcolor="#dcf4b2" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=22">Modificar</a></font></td>
-
-   
-
-    </tr>
-      <tr>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;RECAUDACIÓN MUNICIPAL</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;...</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;8._SOLO_REFRENDO_2023.pdf</font></td>
-      <td height="5" bgcolor="#FFFFFF"><font face="Arial" size="2">&nbsp;SOLO REFRENDO</font></td>
-      <td height="5" bgcolor="#FFFFFF" align="center"><font face="Arial" size="2">&nbsp;<a href="modformato.php?id=23">Modificar</a></font></td>
-
-   
-
-    </tr>
-                </table>
 
 
                <br> 

@@ -5,6 +5,54 @@
 
     <meta charset="UTF-8">
     <title>Categorías</title>
+    <style>
+        table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Estilos para el botón Agregar y el modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal h2 {
+    margin-top: 0;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+    </style>
 
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -77,91 +125,88 @@
             <li role="presentation" ><a href="infraestructura.php">Nuevo Proyecto</a> </li>
             <li role="presentation" ><a href="proyectos.php">Ver Proyectos</a> </li>
             <li role="presentation" class="active"><a href="categorias.php">Categorías</a> </li>
-            <li role="presentation" ><a href="videos.php">Videos</a> </li>
-            <li role="presentation" ><a href="portada.php">Foto de Portada</a> </li>
         </ul>
     </div>
 
-    <div id="modalCategory" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
 
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h3>Modificar Categoría</h3>
-                </div>
-                <div class="modal-body">
-                    <form id="frmEditCategory">
-                        <div class="form-group">
-                            <label class="control-label" for="nombreCategoria2">Categoría</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-th-list"></i>
-                                </span>
-                                <input class="form-control" id="nombreCategoria2" name="nombreCategoria2"
-                                       placeholder="Nombre de la Categoria">
-                                <input type="hidden" id="categoryid" name="categoryid">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-primary btn-primary" id="btnModificar">Guardar</button>
-                </div>
-            </div>
+    <h1>Lista de Categorías</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            require_once('db_config.php');
+
+            // Consulta SQL para obtener todas las categorías
+            $sql_categorias = "SELECT * FROM categorias";
+            $result_categorias = $conn->query($sql_categorias);
+
+            if ($result_categorias->num_rows > 0) {
+                while ($row_categoria = $result_categorias->fetch_assoc()) {
+                    echo '<tr>';
+                    echo '<td>' . $row_categoria['idcategoria'] . '</td>';
+                    echo '<td>' . $row_categoria['categoria'] . '</td>';
+                    echo '<td>
+                    <a href="editarcat.php?id=' . $row_categoria['idcategoria'] . '">Editar</a>
+                            <a href="eliminarcat.php?id=' . $row_categoria['idcategoria'] . '">Eliminar</a>
+                          </td>';
+                    echo '</tr>';
+                }
+            } else {
+                echo '<tr><td colspan="3">No hay categorías disponibles.</td></tr>';
+            }
+            ?>
+        </tbody>
+    </table>
+
+    <button id="btnAgregar">Agregar Nueva Categoría</button>
+
+    <!-- Modal para agregar categoría -->
+    <div class="modal" id="modalAgregar">
+        <div class="modal-content">
+            <span class="close" id="closeAgregar">&times;</span>
+            <h2>Agregar Nueva Categoría</h2>
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nombreCategoria'])) {
+                // Procesar el formulario de inserción de categoría
+                $nombreCategoria = $_POST['nombreCategoria'];
+
+                // Realizar la inserción en la base de datos (reemplaza con tu código de inserción)
+                require_once('db_config.php');
+                $sql_insert = "INSERT INTO categorias (categoria) VALUES ('$nombreCategoria')";
+
+                if ($conn->query($sql_insert) === TRUE) {
+                    echo "<p>Categoría agregada correctamente.</p>";
+                } else {
+                    echo "<p>Error al agregar la categoría: " . $conn->error . "</p>";
+                }
+            }
+            ?>
+            <form id="formAgregarCategoria" method="post">
+                <label for="nombreCategoria">Nombre de la Categoría:</label>
+                <input type="text" name="nombreCategoria" required>
+                <button type="submit">Guardar</button>
+            </form>
         </div>
     </div>
 
-    <!-- Aquí termina el modal de editar categoria-->
+    
+    <script>
+        document.getElementById("btnAgregar").addEventListener("click", function() {
+            document.getElementById("modalAgregar").style.display = "block";
+        });
 
-    <!-- Aqui inicia el formulario-->
+        document.getElementById("closeAgregar").addEventListener("click", function() {
+            document.getElementById("modalAgregar").style.display = "none";
+        });
 
-    <div class="col-lg-6 ">
-
-        <h3>Nueva Categoría</h3>
-        <form id="frmCategoria">
-            <label>Nombre</label>
-
-            <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria"
-                   placeholder="Nombre de la categoría">
-            <div class="row">&nbsp;</div>
-            <button type="submit" class="btn btn btn-primary"><span
-                        class="glyphicon glyphicon-floppy-save"></span>
-                Guardar
-            </button>
-        </form>
-        <br>
-        <br>
-
-    </div>
-
-
-    <!-- Aquí termina el formulario-->
-
-
-    <!-- Aqui inicia datatable de categorias-->
-
-    <div class="col-md-12 ">
-        <div class="row">
-            <h3>Ver Categorías</h3>
-            <table id="tbCategoria" class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th>Clave</th>
-                    <th>Categoría</th>
-                    <th>Operaciones</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-
-
-    </div>
-</div>
-
-
+    </script>
 </body>
 
 </html>

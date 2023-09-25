@@ -69,108 +69,18 @@
 </div>
 
 <div id="espacio3"></div>
-
-<div id="modalProyecto" class="modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h3>Modificar datos del proyecto</h3>
-            </div>
-            <div class="modal-body">
-                <form id="frmEditProyecto">
-                    <div class="form-group">
-                        <label class="control-label" for="title">Título</label>
-                        <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-file"></i>
-                                </span>
-                            <input class="form-control" id="nombre2" name="nombre"
-                                   placeholder="Nombre del proyecto">
-                            <input type="hidden" id="id_proyecto" name="id_proyecto">
-                        </div>
-                        <br/>
-                        <label class="control-label" for="categoria">Categoría</label>
-                        <select name="id_categoria" id="id_categoria2" class="form-control"></select>
-                        <br/>
-                        <label class="control-label" for="description">Descripción</label>
-                        <textarea name="descripcion" id="descripcion2" class="demoInputBox"></textarea>
-
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-primary" id="btnEditProyecto">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div> <!-- EDITAR PUBLICACIÓN MULTIMEDIA -->
-
-
-<div id="modalChangeFile" class="modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h3>Cambiar Archivo</h3>
-            </div>
-            <div class="modal-body">
-                <form id="frmChangeFile" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label class="control-label" for="file">Seleccione Archivo Multimedia</label>
-                        <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-expand"></i>
-                                </span>
-                            <input type="file" id="imagen2" name="imagen">
-                        </div>
-
-                        <input type="hidden" id="id_proyecto2" name="id_proyecto">
-
-                        <div id="progress-div">
-                            <div id="progress-bar"></div>
-                        </div>
-                        <div id="targetLayer"></div>
-
-                        <div align="center">
-                            <div id="loader-icon" style="display:none;"><img
-                                        src="../assets/images/LoaderIcon.gif"/>
-                            </div>
-                        </div>
-                    </div>
-                    <button id="btnCambiarArchivoMultimedia" type="submit" class="btn btn-sm btn-warning ">
-                        Guardar archivo
-                    </button>
-                </form>
-            </div>
-
-            <div class="modal-footer">
-
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Fin de modal de cambiar archivo-->
-
-
 <div class="container">
     <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs" role="tablist">
-            <li role="presentation"><a href="infraestructura.php">Nuevo Proyecto</a></li>
-            <li role="presentation" class="active"><a href="proyectos.php">Ver Proyectos</a></li>
-            <li role="presentation"><a href="categorias.php">Categorías</a></li>
-            <li role="presentation"><a href="videos.php">Videos</a></li>
-            <li role="presentation" ><a href="portada.php">Foto de Portada</a> </li>
-
+            <li role="presentation" ><a href="infraestructura.php">Nuevo Proyecto</a> </li>
+            <li role="presentation" class="active"><a href="proyectos.php">Ver Proyectos</a> </li>
+            <li role="presentation" ><a href="categorias.php">Categorías</a> </li>
         </ul>
-
     </div>
-    <h1 class="page-header">Proyectos</h1 class="page-header">
+
+<div class="container">
+    <h1 class="page-header">Proyectos</h1>
+
     <div class="row">
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <table id="tbProyectos" class="table table-striped table-bordered">
@@ -183,10 +93,34 @@
                     <th>Operaciones</th>
                 </tr>
                 </thead>
+                <tbody>
+                <?php
+                require_once('db_config.php');
+                // Consulta SQL para obtener los proyectos y su información desde la base de datos
+                $sql_proyectos = "SELECT proyectos.idproyecto, proyectos.nombre AS nombre_proyecto, proyectos.imagen AS imagen_proyecto, categorias.categoria AS nombre_categoria FROM proyectos
+                                    LEFT JOIN categorias ON proyectos.categoria = categorias.idcategoria";
+
+                $result_proyectos = $conn->query($sql_proyectos);
+
+                if ($result_proyectos->num_rows > 0) {
+                    while ($row_proyecto = $result_proyectos->fetch_assoc()) {
+                        echo '<tr>';
+                        echo '<td>' . $row_proyecto['idproyecto'] . '</td>';
+                        echo '<td><img src="' . $row_proyecto['imagen_proyecto'] . '" alt="' . $row_proyecto['nombre_proyecto'] . '" width="100"></td>';
+                        echo '<td>' . $row_proyecto['nombre_proyecto'] . '</td>';
+                        echo '<td>' . $row_proyecto['nombre_categoria'] . '</td>';
+                        echo '<td>';
+                        echo '<a href="editarproy.php?id=' . $row_proyecto['idproyecto'] . '" class="btn btn-sm btn-info">Editar</a>';
+                        echo '<a href="eliminarproy.php?id=' . $row_proyecto['idproyecto'] . '" class="btn btn-sm btn-warning">Eliminar</a>';
+                        echo '</td>';
+                        echo '</tr>';
+                    }
+                }
+                ?>
+                </tbody>
             </table>
         </div>
     </div>
-
 </div>
 
 </body>

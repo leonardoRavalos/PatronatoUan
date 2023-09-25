@@ -35,7 +35,7 @@
                     </ul>
                 </li>
                 <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
-                <li><a href="#">TRANSAPRENCIA</a>
+                <li><a href="#">TRANSPARENCIA</a>
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
                         <li><a href="https://transparencia.nayarit.gob.mx/index.php?option=com_wrapper&view=wrapper&Itemid=495">PLATAFORMA ESTATAL DEL TRANSPARENCIA </a></li>
@@ -47,6 +47,8 @@
                         <li><a href="contratistas.php">PADRÓN DE CONTRATISTAS</a></li>
                         <li><a href="correccion.php">CORRECIÓN DE DATOS: </a></li>
                     </ul>
+                </li>
+                <li><a href="interes.php">LIGAS DE INTERES</a>
                 </li>
             </ul>
         </nav>
@@ -114,7 +116,8 @@
 
                 echo '<div class="news-card">';
                 echo '<div class="padre" style="padding: 8px;">';
-                echo '<div class="hijo img-thumbnail" style="padding: 8px; background-image: url(' . $imagen .'); background-size: cover; background-position: center; margin: 3px;">';
+                $imagenURL = 'admin/carpeta_destino/' . $row['imagen'];
+                echo '<div class="hijo img-thumbnail" style="padding: 8px; background-image: url(' . $imagenURL .'); background-size: cover; background-position: center; margin: 3px;">';
                 echo '<img src="images/imagen_beta.png" alt="Texto representativo" class="img-fluid img-new">';
                 echo '</div>';
                 echo '</div>';
@@ -125,7 +128,6 @@
             }
 
             // Cerrar la conexión a la base de datos
-            $conn->close();
             ?>
         </div>
         <script src="Scripts/carrusel.js"></script>
@@ -150,15 +152,34 @@
 
     </footer>
 
-    <div class="privacy-links">
-        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf">Aviso de Privacidad</a>
-        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf">Aviso de Privacidad Simplificado</a>
-    </div>
+    <?php
+            
+
+            // Consultar la base de datos para obtener las primeras 3 noticias
+            $sql = "SELECT nombre, archivo FROM aviso_privacidad";
+            $result = $conn->query($sql);
+
+            // Recorrer los resultados y generar las tarjetas de noticias
+            while ($row = $result->fetch_assoc()) {
+                $nombre = $row['nombre'];
+                $archivo = $row['archivo'];
+                
+                $pdfURL = 'admin/carpeta_destino/' . $row['archivo'];
+
+                echo '<div class="privacy-links">
+                    <a href="'. $pdfURL .'">'. $nombre .'</a><br>
+                </div>';
+
+            }
+
+            // Cerrar la conexión a la base de datos
+            $conn->close();
+            ?>
     <script>
   // Obtén todas las diapositivas del carrusel
 var slides = document.querySelectorAll(".banner-slide");
 var currentSlide = 0;
-var interval = 3000; // Intervalo en milisegundos (3 segundos en este caso)
+var interval = 2000; // Intervalo en milisegundos (3 segundos en este caso)
 
 function showSlide(index) {
   // Oculta todas las diapositivas

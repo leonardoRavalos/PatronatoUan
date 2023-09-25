@@ -8,6 +8,7 @@
     <!-- CSS de Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/estilos.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
@@ -44,8 +45,8 @@
                         <li><a href="manteniminento.php">PROGRAMA ANUAL DE ARCHIVO</a></li>
                     </ul>
                 </li>
-                <li><a href="manteniminento.php">infraestructura.php</a></li>
-                <li><a href="#">TRANSAPRENCIA</a>
+                <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
+                <li><a href="#">TRANSPARENCIA</a>
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
                         <li><a href="https://transparencia.nayarit.gob.mx/index.php?option=com_wrapper&view=wrapper&Itemid=495">PLATAFORMA ESTATAL DEL TRANSPARENCIA </a></li>
@@ -57,6 +58,8 @@
                         <li><a href="contratistas.php">PADRÓN DE CONTRATISTAS</a></li>
                         <li><a href="correccion.php">CORRECIÓN DE DATOS: </a></li>
                     </ul>
+                </li>
+                <li><a href="interes.php">LIGAS DE INTERES</a>
                 </li>
             </ul>
         </nav>
@@ -76,118 +79,37 @@
                     <div class="row">
 
                     
-                        <div class="col-md-6">
-                            <div class="padre" style="padding: 8px;">
-                              <div class="hijo div-relative"
-                              style="background-image: url('imagenes/logoEstado.png');
-                              background-size: 50%;
-                              background-position: center;
-                              background-repeat: no-repeat;
-                              padding: 0;">
-                                <a href="http://www.nayarit.gob.mx/" target="_blank" style="text-decoration: none;">
-                                    <img src="images/imagen_beta.png" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        <div class="col-md-6">
-                            <div class="padre" style="padding: 8px;">
-                              <div class="hijo div-relative"
-                              style="background-image: url('imagenes/Logotipo_UAN_Azul.png');
-                              background-size: 50%;
-                              background-position: center;
-                              background-repeat: no-repeat;
-                              padding: 0;">
-                                <a href="http://www.uan.edu.mx/" target="_blank" style="text-decoration: none;">
-                                    <img src="images/imagen_beta.png" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        <div class="col-md-6">
-                            <div class="padre" style="padding: 8px;">
-                              <div class="hijo div-relative"
-                              style="background-image: url('imagenes/litai.jpg');
-                              background-size: 50%;
-                              background-position: center;
-                              background-repeat: no-repeat;
-                              padding: 0;">
-                                <a href="http://www.itainayarit.org/" target="_blank" style="text-decoration: none;">
-                                    <img src="images/imagen_beta.png" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        <div class="col-md-6">
-                            <div class="padre" style="padding: 8px;">
-                              <div class="hijo div-relative"
-                              style="background-image: url('imagenes/fuuan.jpg');
-                              background-size: 50%;
-                              background-position: center;
-                              background-repeat: no-repeat;
-                              padding: 0;">
-                                <a href="https://www.facebook.com/pg/Fundaci%C3%B3n-UAN-2179834265407580/about/?ref=page_internal" target="_blank" style="text-decoration: none;">
-                                    <img src="images/imagen_beta.png" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        <div class="col-md-6">
-                            <div class="padre" style="padding: 8px;">
-                              <div class="hijo div-relative"
-                              style="background-image: url('imagenes/lspauan.png');
-                              background-size: 50%;
-                              background-position: center;
-                              background-repeat: no-repeat;
-                              padding: 0;">
-                                <a href="http://www.spauan.org.mx/" target="_blank" style="text-decoration: none;">
-                                    <img src="images/imagen_beta.png" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        <div class="col-md-6">
-                            <div class="padre" style="padding: 8px;">
-                              <div class="hijo div-relative"
-                              style="background-image: url('imagenes/lsetuan.jpg');
-                              background-size: 50%;
-                              background-position: center;
-                              background-repeat: no-repeat;
-                              padding: 0;">
-                                <a href="http://www.setuan.org.mx/" target="_blank" style="text-decoration: none;">
-                                    <img src="images/imagen_beta.png" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        <div class="col-md-6">
-                            <div class="padre" style="padding: 8px;">
-                              <div class="hijo div-relative"
-                              style="background-image: url('imagenes/FEUAN.png');
-                              background-size: 50%;
-                              background-position: center;
-                              background-repeat: no-repeat;
-                              padding: 0;">
-                                <a href="http://www.feuan.net/" target="_blank" style="text-decoration: none;">
-                                    <img src="images/imagen_beta.png" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        <div class="col-md-6">
-                            <div class="padre" style="padding: 8px;">
-                              <div class="hijo div-relative"
-                              style="background-image: url('imagenes/infomelx.png');
-                              background-size: 50%;
-                              background-position: center;
-                              background-repeat: no-repeat;
-                              padding: 0;">
-                                <a href="http://www.infomexnayarit.gob.mx/infomex/" target="_blank" style="text-decoration: none;">
-                                    <img src="images/imagen_beta.png" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">
-                                </a>
-                              </div>
-                            </div>
-                          </div>                                    <!--Nuevo Liga-->
+                    <?php
+                    // Conectar a la base de datos usando tu archivo de configuración
+                require_once('admin/db_config.php');
+
+                $sql = "SELECT imagen, enlace FROM intereses";
+                $result = $conn->query($sql);
+
+                // Recorrer los resultados y generar las tarjetas de noticias
+                while ($row = $result->fetch_assoc()) {
+                  $enlace = $row['enlace'];
+                  $imagen = $row['imagen'];
+                  $imagenURL = 'admin/carpeta_destino/' . $row['imagen'];
+
+                    echo '<div class="col-md-6">
+                                <div class="padre" style="padding: 8px;">
+                                    <div class="hijo div-relative"
+                                        style="background-image: url(\'imagenes/logoEstado.png\');
+                                                background-size: 50%;
+                                                background-position: center;
+                                                background-repeat: no-repeat;
+                                                padding: 0;">
+                                        <a href=" '. $enlace . ' " target="_blank" style="text-decoration: none;">
+                                            <img src="'. $imagenURL . '" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>';
+                }
+                    
+                    ?>
+                                   <!--Nuevo Liga-->
                     </div>
                 </div>
               </div>
@@ -217,10 +139,29 @@
 
     </footer>
 
-    <div class="privacy-links">
-        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf">Aviso de Privacidad</a>
-        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf">Aviso de Privacidad Simplificado</a>
-    </div>
+    <?php
+            
+
+            // Consultar la base de datos para obtener las primeras 3 noticias
+            $sql = "SELECT nombre, archivo FROM aviso_privacidad";
+            $result = $conn->query($sql);
+
+            // Recorrer los resultados y generar las tarjetas de noticias
+            while ($row = $result->fetch_assoc()) {
+                $nombre = $row['nombre'];
+                $archivo = $row['archivo'];
+                
+                $pdfURL = 'admin/carpeta_destino/' . $row['archivo'];
+
+                echo '<div class="privacy-links">
+                    <a href="'. $pdfURL .'">'. $nombre .'</a><br>
+                </div>';
+
+            }
+
+            // Cerrar la conexión a la base de datos
+            $conn->close();
+            ?>
 
         
 

@@ -46,7 +46,7 @@
                     </ul>
                 </li>
                 <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
-                <li><a href="#">TRANSAPRENCIA</a>
+                <li><a href="#">TRANSPARENCIA</a>
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
                         <li><a href="https://transparencia.nayarit.gob.mx/index.php?option=com_wrapper&view=wrapper&Itemid=495">PLATAFORMA ESTATAL DEL TRANSPARENCIA </a></li>
@@ -58,6 +58,8 @@
                         <li><a href="contratistas.php">PADRÓN DE CONTRATISTAS</a></li>
                         <li><a href="correccion.php">CORRECIÓN DE DATOS: </a></li>
                     </ul>
+                </li>
+                <li><a href="interes.php">LIGAS DE INTERES</a>
                 </li>
             </ul>
         </nav>
@@ -88,13 +90,13 @@
                 $idnoticia = $_GET['id'];
 
                 // Consulta SQL para obtener la noticia específica por su idnoticia
-                $sql = "SELECT imagen, titulo, nota_larga FROM noticias WHERE idnoticia = $idnoticia";
+                $sql = "SELECT imagen, titulo, NOTA_LARGA FROM noticias WHERE idnoticia = $idnoticia";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
                     $titulo = $row["titulo"];
-                    $nota_larga = $row["nota_larga"];
+                    $NOTA_LARGA = $row["NOTA_LARGA"];
                 } else {
                     echo "No se encontró la noticia.";
                 }
@@ -139,7 +141,9 @@
                                 } else {
                                     echo "No se proporcionó un ID de noticia válido.";
                                 }
-                                echo '<img src="' . $imagen . '" alt="Descripción de la imagen" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">';
+
+                                $imagenURL = 'admin/carpeta_destino/' . $row['imagen'];
+                                echo '<img src="' . $imagenURL . '" alt="Descripción de la imagen" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">';
 
                                 
                                 
@@ -163,7 +167,7 @@
                     </div>
                     <div class="justificado">
                         <p class="futura-descripcion">
-                            <?php echo $nota_larga; // Muestra la nota de la noticia ?>
+                            <?php echo $NOTA_LARGA; // Muestra la nota de la noticia ?>
                         </p>
                     </div>
                 </div>
@@ -191,10 +195,29 @@
 
     </footer>
 
-    <div class="privacy-links">
-        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf">Aviso de Privacidad</a>
-        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf">Aviso de Privacidad Simplificado</a>
-    </div>
+    <?php
+            
+
+            // Consultar la base de datos para obtener las primeras 3 noticias
+            $sql = "SELECT nombre, archivo FROM aviso_privacidad";
+            $result = $conn->query($sql);
+
+            // Recorrer los resultados y generar las tarjetas de noticias
+            while ($row = $result->fetch_assoc()) {
+                $nombre = $row['nombre'];
+                $archivo = $row['archivo'];
+                
+                $pdfURL = 'admin/carpeta_destino/' . $row['archivo'];
+
+                echo '<div class="privacy-links">
+                    <a href="'. $pdfURL .'">'. $nombre .'</a><br>
+                </div>';
+
+            }
+
+            // Cerrar la conexión a la base de datos
+            $conn->close();
+            ?>
           
               <!-- Librería jQuery requerida por los plugins de JavaScript -->
               <script src="https://code.jquery.com/jquery.js"></script>

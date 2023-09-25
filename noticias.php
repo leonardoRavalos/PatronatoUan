@@ -45,7 +45,7 @@
                     </ul>
                 </li>
                 <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
-                <li><a href="#">TRANSAPRENCIA</a>
+                <li><a href="#">TRANSPARENCIA</a>
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
                         <li><a href="https://transparencia.nayarit.gob.mx/index.php?option=com_wrapper&view=wrapper&Itemid=495">PLATAFORMA ESTATAL DEL TRANSPARENCIA </a></li>
@@ -57,6 +57,8 @@
                         <li><a href="contratistas.php">PADRÓN DE CONTRATISTAS</a></li>
                         <li><a href="correccion.php">CORRECIÓN DE DATOS: </a></li>
                     </ul>
+                </li>
+                <li><a href="interes.php">LIGAS DE INTERES</a>
                 </li>
             </ul>
         </nav>
@@ -80,51 +82,56 @@
                       <div class="row">
                         <!--Contenedor de la noticia-->
                         <?php
-                        // Conectar a la base de datos usando tu archivo de configuración
-                        require_once('admin/db_config.php');
+// Conectar a la base de datos usando tu archivo de configuración
+require_once('admin/db_config.php');
 
-                        // Consulta SQL para obtener noticias de la tabla "noticias"
-                        $sql = "SELECT idnoticia, imagen, titulo, nota FROM noticias";
-                        $result = $conn->query($sql);
+// Consulta SQL para obtener noticias de la tabla "noticias"
+$sql = "SELECT idnoticia, imagen, titulo, nota FROM noticias";
+$result = $conn->query($sql);
 
-                        if ($result->num_rows > 0) {
-                          echo '<section>';
-                          echo '<div class="news-cards-container">'; // Aplicar el estilo del contenedor
-                          
-                          $count = 0;
-                          
-                          while ($row = $result->fetch_assoc()) {
-                            // Generar una card para cada noticia
-                            echo '<div class="news-card">'; // Aplicar el estilo de la card
-                            echo '<img src="' . $row["imagen"] . '" class="card-img-top">';
-                            echo '<div class="card-body">';
-                            echo '<h3 class="card-title">' . $row["titulo"] . '</h3>'; // Usar "h3" en lugar de "h5"
-                            echo '<p class="card-text">' . $row["nota"] . '</p>';
-                            
-                            // Enlace "Leer más" que lleva a "nota.php" con el idnoticia como parámetro
-                            echo '<a href="nota.php?id=' . $row["idnoticia"] . '" class="card-link">Leer más</a>'; 
-                        
-                            echo '</div>';
-                            echo '</div>';
-                        
-                            $count++;
-                        
-                            // Cierra la fila después de generar 4 cards
-                            if ($count % 4 == 0) {
-                                echo '</div>';
-                                echo '<div class="news-cards-container">'; // Aplicar el estilo del contenedor
-                            }
-                        }
-                          
-                          echo '</div>'; // Cierra el contenedor
-                          echo '</section>';
-                        } else {
-                            echo "No se encontraron noticias.";
-                        }
+if ($result->num_rows > 0) {
+    echo '<section>';
+    echo '<div class="news-cards-container">'; // Aplicar el estilo del contenedor
 
-                        // Cierra la conexión a la base de datos
-                        $conn->close();
-                        ?>
+    $count = 0;
+
+    while ($row = $result->fetch_assoc()) {
+        // Generar una card para cada noticia
+        echo '<div class="news-card">'; // Aplicar el estilo de la card
+
+        // Construye la URL completa de la imagen utilizando la carpeta_destino en la carpeta "admin"
+        $imagenURL = 'admin/carpeta_destino/' . $row["imagen"];
+        echo '<img src="' . $imagenURL . '" class="card-img-top">';
+
+        echo '<div class="card-body">';
+        echo '<h3 class="card-title">' . $row["titulo"] . '</h3>'; // Usar "h3" en lugar de "h5"
+        echo '<p class="card-text">' . $row["nota"] . '</p>';
+
+        // Enlace "Leer más" que lleva a "nota.php" con el idnoticia como parámetro
+        echo '<a href="nota.php?id=' . $row["idnoticia"] . '" class="card-link">Leer más</a>';
+
+        echo '</div>';
+        echo '</div>';
+
+        $count++;
+
+        // Cierra la fila después de generar 4 cards
+        if ($count % 4 == 0) {
+            echo '</div>';
+            echo '<div class="news-cards-container">'; // Aplicar el estilo del contenedor
+        }
+    }
+
+    echo '</div>'; // Cierra el contenedor
+    echo '</section>';
+} else {
+    echo "No se encontraron noticias.";
+}
+
+// Cierra la conexión a la base de datos
+$conn->close();
+?>
+
 
                         
                 
@@ -157,10 +164,29 @@
 
     </footer>
 
-    <div class="privacy-links">
-        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_INTEGRAL.pdf">Aviso de Privacidad</a>
-        <a href="uploads/aviso_privacidad/AVISO_DE_PRIVACIDAD_SIMPLIFICADO.pdf">Aviso de Privacidad Simplificado</a>
-    </div>
+    <?php
+            
+
+            // Consultar la base de datos para obtener las primeras 3 noticias
+            $sql = "SELECT nombre, archivo FROM aviso_privacidad";
+            $result = $conn->query($sql);
+
+            // Recorrer los resultados y generar las tarjetas de noticias
+            while ($row = $result->fetch_assoc()) {
+                $nombre = $row['nombre'];
+                $archivo = $row['archivo'];
+                
+                $pdfURL = 'admin/carpeta_destino/' . $row['archivo'];
+
+                echo '<div class="privacy-links">
+                    <a href="'. $pdfURL .'">'. $nombre .'</a><br>
+                </div>';
+
+            }
+
+            // Cerrar la conexión a la base de datos
+            $conn->close();
+            ?>
 
       
 

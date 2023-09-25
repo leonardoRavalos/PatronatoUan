@@ -46,7 +46,7 @@
                     </ul>
                 </li>
                 <li><a href="infraestructura.php">INFRAESTRUCTURA</a></li>
-                <li><a href="#">TRANSAPRENCIA</a>
+                <li><a href="#">TRANSPARENCIA</a>
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
                         <li><a href="https://transparencia.nayarit.gob.mx/index.php?option=com_wrapper&view=wrapper&Itemid=495">PLATAFORMA ESTATAL DEL TRANSPARENCIA </a></li>
@@ -58,6 +58,8 @@
                         <li><a href="contratistas.php">PADRÓN DE CONTRATISTAS</a></li>
                         <li><a href="correccion.php">CORRECIÓN DE DATOS: </a></li>
                     </ul>
+                </li>
+                <li><a href="interes.php">LIGAS DE INTERES</a>
                 </li>
             </ul>
         </nav>
@@ -155,12 +157,29 @@
             <h3>Dirección</h3>
             <p class="contact-info">Country Club No. 98 Col. Versalles.</p>
         </div>
-        <div class="footer-section">
-            <h3>Enlaces de Interés</h3>
-            <a href="https://www.nayarit.gob.mx/">Gobierno de nayarit</a><br>
-            <a href="https://www.uan.edu.mx/">Universidad Autonoma de Nayarit</a><br>
-            <a href="https://www.facebook.com/FUNUAN.AC">Fundacion UAN</a><br>
-        </div>
+        <?php
+            
+
+            // Consultar la base de datos para obtener las primeras 3 noticias
+            $sql = "SELECT nombre, archivo FROM aviso_privacidad";
+            $result = $conn->query($sql);
+
+            // Recorrer los resultados y generar las tarjetas de noticias
+            while ($row = $result->fetch_assoc()) {
+                $nombre = $row['nombre'];
+                $archivo = $row['archivo'];
+                
+                $pdfURL = 'admin/carpeta_destino/' . $row['archivo'];
+
+                echo '<div class="privacy-links">
+                    <a href="'. $pdfURL .'">'. $nombre .'</a><br>
+                </div>';
+
+            }
+
+            // Cerrar la conexión a la base de datos
+            $conn->close();
+            ?>
 
     </footer>
 

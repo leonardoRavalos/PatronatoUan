@@ -19,7 +19,7 @@
     <script type="text/javascript" src="../assets/js/plugins/additional-methods.min.js"></script>
     <script type="text/javascript" src="../assets/js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/tinymce/tinymce.min.js"></script>
-    <script type="text/javascript" src="../assets/js/integrantes.js"></script>
+    <script type="text/javascript" src="../assets/js/patronato.js"></script>
 
 
 </head>
@@ -66,82 +66,107 @@
 
 <div class="container">
 
-    <div id="modalChangeImage" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h3>Cambiar Imagen</h3>
-                </div>
-                <div class="modal-body">
-                    <form id="frmChangeImage" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label class="control-label" for="file2">Seleccione Fotografía</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-picture"></i>
-                                </span>
-                                <input type="file" class="btn btn-effect-ripple btn-default" id="imagen2" name="imagen">
-                            </div>
-                            <div align="center">
-                                <div id="loader-icon" style="display:none;"><br><img
-                                            src="../assets/images/LoaderIcon.gif"/></div>
-                            </div>
-                            <input type="hidden" id="id_patronato" name="id_patronato">
-                        </div>
-                    </form>
-                </div>
-
-                <div class="modal-footer">
-                    <button id="btnChangeImage2" type="button" class="btn btn-sm btn-primary ">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Fin de modal de cambiar foto-->
-
+    
 
     <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs" role="tablist">
-            <li role="presentation"><a href="patronato.php">¿Qué es?</a></li>
-            <li role="presentation"><a href="quehace.php">¿Qué hace?</a></li>
+            <li role="presentation" ><a href="patronato.php">¿Qué es?</a></li>
+            <li role="presentation" ><a href="quehace.php">¿Qué hace?</a></li>
             <li role="presentation" class="active"><a href="integrantes.php">¿Quiénes lo intengran?</a></li>
             <li role="presentation"><a href="historia.php">Historia</a></li>
             <li role="presentation"><a href="marco_legal.php">Marco Legal</a></li>
+            <li role="presentation"><a href="organigrama.php">Organigrama</a></li>
 
 
         </ul>
 
     </div>
+    <?php
+require_once('db_config.php');
+
+$contenido = "";
+$foto_que = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["contenido"])) {
+        $nuevoContenido = $_POST["contenido"];
+
+        // Actualiza el contenido en la base de datos
+        $query = "UPDATE patronato SET integrantes = '$nuevoContenido' "; // Ajusta el ID o condición según tus necesidades
+
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+            echo "Contenido guardado exitosamente.";
+        } else {
+            echo "Error al guardar el contenido.";
+        }
+    }
+
+    // Procesa la carga de la imagen
+    if (isset($_FILES["imagen"]["name"])) {
+        $nombreArchivo = $_FILES["imagen"]["name"];
+        $rutaTemporal = $_FILES["imagen"]["tmp_name"];
+        $carpetaDestino = "carpeta_destino/";
+
+        // Mueve el archivo cargado a la carpeta de destino
+        if (move_uploaded_file($rutaTemporal, $carpetaDestino . $nombreArchivo)) {
+            // Actualiza la columna 'foto_que' en la base de datos con la nueva ruta de la imagen
+            $nuevaRutaImagen = $carpetaDestino . $nombreArchivo;
+            $query = "UPDATE patronato SET foto_integra = '$nuevaRutaImagen' "; // Ajusta el ID o condición según tus necesidades
+
+            $result = mysqli_query($conn, $query);
+
+            if ($result) {
+                echo "Imagen cambiada y guardada exitosamente.";
+            } else {
+                echo "Error al guardar la imagen.";
+            }
+        } else {
+            echo "Error al mover el archivo a la carpeta de destino.";
+        }
+    }
+}
+
+// Consulta la información de la base de datos
+$query = "SELECT integrantes, foto_integra FROM patronato "; // Ajusta el ID o condición según tus necesidades
+
+$result = mysqli_query($conn, $query);
+
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $contenido = $row['integrantes'];
+    $foto_integra = $row['foto_integra'];
+}
+?>
     <h1>Patronato</h1>
-    <h3 class="page-header">¿Quiénes lo integran?</h3>
+    <h3 class="page-header">¿Quiénes lo intengran?</h3>
 
     <div class="col col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <br>
+        <form method="POST" enctype="multipart/form-data">
+            <textarea name="contenido" id="contenido"><?php echo $contenido; ?></textarea>
+            <br/>
+            <br/>
 
-        <br>
-        <textarea name="contenido" id="contenido"></textarea>
-        <br/>
+            <!-- Campo de carga de archivos para la imagen -->
+            <input type="file" name="imagen" id="imagen" accept="image/*">
+            <br/>
+            <br/>
 
-
-        <br/>
-        <br/>
-
-        <button type="submit" class="btn btn-primary" id="btnGuardar"><span
-                    class="glyphicon glyphicon-floppy-disk"></span> Guardar
-        </button>
-        &nbsp;
-
-        <button class="btn btn-primary" id="btnChangeImage"><span
-                    class="glyphicon glyphicon-picture"></span> Cambiar Imagen
-        </button>
-
+            <button id="btnGuardar" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+            &nbsp;
+            &nbsp;
+            <button class="btn btn-primary" id="btnChangeImage"><span class="glyphicon glyphicon-picture"></span> Cambiar Imagen</button>
+        </form>
     </div>
+
     <div class="col col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <label>Imagen:</label>
-        <img id="imgPat" src="" class="img-responsive">
+        <img id="imgPat" src="<?php echo $foto_integra; ?>" class="img-responsive">
     </div>
+
+
 
 
 </div>

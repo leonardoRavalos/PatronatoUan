@@ -1,148 +1,128 @@
-    <!DOCTYPE html>
-    <html lang="en">
+<?php
+session_start();
+require_once('db_config.php'); // Include your database configuration
 
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="estiloAdmin.css">
-        <link rel="stylesheet" href="normalize.css">
-        <script src="nicEdit-latest.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            bkLib.onDomLoaded(nicEditors.allTextAreas);
+// Verificar si se ha enviado el formulario de edición
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['guardar'])) {
+    $idinteres = $_POST['id_interes'];
+    $nuevoEnlace = $_POST['nuevo_enlace'];
+    $nuevaImagen = $_FILES['nueva_imagen']['name']; // Nombre del archivo de la nueva imagen
 
-        </script>
+    // Validar y procesar la nueva imagen si se ha cargado
+    if (!empty($nuevaImagen)) {
+        $targetDirectory = "carpeta_destino/"; // Ruta donde se guardarán las imágenes
+        $targetFile = $targetDirectory . basename($nuevaImagen);
+        // Mover la imagen cargada a la carpeta de destino
+        move_uploaded_file($_FILES['nueva_imagen']['tmp_name'], $targetFile);
+    }
 
-        <title>Modificar Imagen</title>
+    // Actualizar la noticia en la base de datos
+    $sql = "UPDATE intereses SET enlace = '$nuevoEnlace', imagen = '$nuevaImagen'WHERE idinteres = $idinteres";
+    if ($conn->query($sql) === TRUE) {
+        // Noticia actualizada con éxito
+        // Puedes redirigir o mostrar un mensaje de éxito
+        header("Location: intereses.php");
+        exit();
+    } else {
+        echo "Error al cargar el interes: " . $conn->error;
+    }
+}
 
-    </head>
+// Obtener el ID de interes desde la URL
+if (isset($_GET['id'])) {
+    $idinteres = $_GET['id'];
 
-    <body style="background:#d9d9d9;">
+    // Obtener los detalles de interes la base de datos
+    $query = "SELECT idinteres, enlace, imagen FROM intereses WHERE idinteres = $idinteres";
+    $result = mysqli_query($conn, $query);
 
-        <div class="menufondo">
-    <div class="enca-lenguajeb">
-       <div align="center">
-        </div>
-    </div>
-    <div class="logo">
-        <img src="../imagenes/logo.png" width="250" height="35" id="logovela">
-    </div>
-    <div class="divmenu">
-        <header>
- <div class="menu_bar">
-        <a href="#" class="bt-menu"><span class="icon-list"></span>Menu</a>
-  </div>
-		<nav class="menu">
-			<ul>
-                <li><a href="bienvenida.php" >Bienvenida</a></li>
-				<li><a href="usuarios.php" >Usuarios</a></li>
-				<li><a href="noticias.php" >Noticias</a></li>
-				<li><a href="formatos.php" >Formatos</a></li>
-				<li><a href="recaudacion.php" >Recaudación</a></li>
-				<li><a href="intereses.php" class="activa">Interes</a></li>
-				<li><a href="numerales.php" >Numerales</a></li>
-				<li><a href="privacidad.php" >Aviso de privacidad</a></li>
-				<li><a href="infraestructura.php" >Infraestructura</a></li>
-				<li><a href="patronato.php" >Patronato</a></li>
-				<li><a href="pantalla_principal.php" >Pantalla Principal</a></li>
-                <li><a href="secciones.php" >Secciones</a></li>
+    if ($row = mysqli_fetch_assoc($result)) {
+        $interesActual = $row['enlace'];
+        $imagenActual = $row['imagen'];
+    } else {
+        echo "interes no encontrada.";
+        exit();
+    }
+} else {
+    echo "ID de interes no proporcionado.";
+    exit();
+}
+?>
 
-				<li><a href="logout.php" >Salir</a></li>
-			</ul>
-		</nav>
-</header>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Noticia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
 
-        <div id="espacio3"></div>
-        <div align="center">
-            <form action="movadmin.php" method="post" name="form1" id="form1" enctype="multipart/form-data">
-                <table border="2" width="60%" bordercolor="#000000" cellspacing="0" cellpadding="0" bgcolor="white">
-                    <tr>
-                        <td>
-                            <table border="0" width="100%" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td colspan="3">&nbsp;</td>
-                                </tr>
-                                <tr bgcolor="#1356A4" height="25">
-                                    <td colspan="3">
-                                        <p align="center"><b>
-						<font size="4" color="white" face="Arial">Agregar Interes</font></b></td>
-                                </tr>
-                                <tr>
-                                    <td width="11%">&nbsp;</td>
-                                    <td width="51%">&nbsp;</td>
-                                    <td width="28%">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td width="20%" align="right">
-                                        <font face="Arial">&nbsp; Imagen:
-                                        </font>
-                                    </td>
-                                    <td width="51%">
-                                        <font face="Arial">&nbsp;</font>
-                                        <font size="3" face="Arial"><input type="file" name="imagen" id="imagen"></font>
-                                    </td>
-                                    <td width="28%">
-                                        <font face="Arial"><b>MÁXIMA DIMENSIÓN POR IMAGEN <br>(ancho: 600, alto: 600)</b></font>
-                                    </td>
-                                </tr>
+        h1 {
+            background-color: #1356A4;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
 
-                                <tr>
-                                    <td width="11%">&nbsp;</td>
-                                    <td width="51%">
-                                        <font face="Arial">&nbsp; Actual:
-                                            logoEstado.png                                        </font>
-                                    </td>
-                                    <td width="28%">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td width="20%">&nbsp;</td>
-                                    <td width="51%"></td>
-                                    <td width="28%">&nbsp;</td>
-                                </tr>
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
 
-                                <tr>
-                                    <td width="20%" align="right">
-                                        <font face="Arial">&nbsp; Enlace:
-                                        </font>
-                                    </td>
-                                    <td colspan="2">
-                                        &nbsp; <input type="text" name="enlace" id="enlace" size="50" value="http://www.nayarit.gob.mx/" autocomplete="off">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="20%">&nbsp;</td>
-                                    <td width="51%"></td>
-                                    <td width="28%">&nbsp;</td>
-                                </tr>
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
 
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
 
-                                <tr>
-                                    <td width="20%">&nbsp;</td>
-                                    <td width="51%">
-                                        <font face="Arial">&nbsp;</font>
-                                        <font size="3" face="Arial">
+        input[type="file"] {
+            margin-top: 10px;
+        }
 
-                                            <input type="hidden" name="movi" value="modinteres">
-                                            <input type="hidden" name="idimg" value="1">
-                                            <input type="submit" name="guardar" value="Guardar" class="btn-admin">
+        input[type="submit"] {
+            background-color: #1356A4;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
 
-                                        </font>
-                                    </td>
-                                    <td width="28%">&nbsp;</td>
-                                </tr>
-
-                                <tr>
-                                    <td width="20%">&nbsp;</td>
-                                    <td width="51%"></td>
-                                    <td width="28%">&nbsp;</td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-
-    </body>
-
-    </html>
+        input[type="submit"]:hover {
+            background-color: #0f457f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editar interes</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="id_interes" value="<?php echo $idinteres; ?>">
+        
+        <label for="nuevo_enlace">Nuevo enlace:</label>
+        <input type="text" id="nuevo_enlace" name="nuevo_enlace" value="<?php echo $interesActual; ?>"><br><br>
+        
+        <label for="nueva_imagen">Nueva Imagen:</label>
+        <input type="file" id="nueva_imagen" name="nueva_imagen"><br><br>
+        
+        <input type="submit" name="guardar" value="Guardar Cambios">
+    </form>
+</body>
+</html>

@@ -74,16 +74,7 @@
                                 </tr>
 
 
-                                <tr>
-                                    <td width="20%">&nbsp;</td>
-                                    <td width="51%">
-                                        <font face="Arial">&nbsp;</font>
-                                        <font size="3" face="Arial">
-                                            <input type="submit" name="guardar" value="Modificar" class="btn-admin">
-                                        </font>
-                                    </td>
-                                    <td width="28%">&nbsp;</td>
-                                </tr>
+                               
 
                                 <tr>
                                     <td width="20%">&nbsp;</td>

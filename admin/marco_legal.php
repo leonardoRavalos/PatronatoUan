@@ -5,6 +5,52 @@
 
     <meta charset="UTF-8">
     <title>Patronato</title>
+    <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .edit-button, .delete-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-right: 5px;
+    }
+
+    .edit-button:hover, .delete-button:hover {
+        background-color: #45a049;
+    }
+    .add-button {
+            display: inline-block;
+            background-color: #1356A4;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 3px;
+            margin: 20px;
+        }
+
+        .add-button:hover {
+            background-color: #0f457f;
+        }
+</style>
 
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -69,38 +115,7 @@
 <div id="espacio3"></div>
 
 
-<div class="container">
-    <div id="modalDocumento" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
 
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h3>Modificar nombre del archivo</h3>
-                </div>
-                <div class="modal-body">
-                    <form id="frmEditDocumento">
-                        <div class="form-group">
-                            <label class="control-label" for="title">Nombre</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-file"></i>
-                                </span>
-                                <input class="form-control" id="nombre2" name="nombre"
-                                       placeholder="Nombre del proyecto">
-                                <input type="hidden" id="id_documento" name="id_documento">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-primary" id="btnEditDocumento">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -109,62 +124,59 @@
             <li role="presentation"><a href="integrantes.php">¿Quiénes lo intengran?</a></li>
             <li role="presentation"><a href="historia.php">Historia</a></li>
             <li role="presentation" class="active"><a href="marco_legal.php">Marco Legal</a></li>
+            <li role="presentation"><a href="organigrama.php">Organigrama</a></li>
 
 
         </ul>
 
     </div>
     <h1>Patronato</h1>
+    <br>
+    <a href="agregar_marco.php" class="add-button">Agregar Nuevo Marco Legal</a>
+    <?php
+require_once('db_config.php');
 
-    <div class="col col-lg-7 col-md-7 col-sm-12 col-xs-12">
-        <h3 class="page-header">Editar texto</h3>
-        <br>
-        <textarea name="contenido" id="contenido"></textarea>
-        <br/>
+// Realiza una consulta SQL para obtener los datos que necesitas
+$query = "SELECT marco_legal.idmarco_legal, marco_legal.descripcion, archivos_marco_legal.documento
+          FROM marco_legal
+          LEFT JOIN archivos_marco_legal ON marco_legal.idmarco_legal = archivos_marco_legal.marco_legal";
+
+$result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die("Error en la consulta: " . mysqli_error($conn));
+}
+
+// Imprime la tabla de contenido
+echo '<table>
+        <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Archivo</th>
+                <th>Funciones</th>
+            </tr>
+        </thead>
+        <tbody>';
+
+while ($row = mysqli_fetch_assoc($result)) {
+    echo '<tr>';
+    echo '<td>' . $row['descripcion'] . '</td>';
+    echo '<td>' . $row['documento'] . '</td>';
+    echo '<td>
+            <a class="edit-button" href="modmarco.php?id=' . $row['idmarco_legal'] . '">Modificar</a>
+            <button class="delete-button" onclick="borrar(' . $row['idmarco_legal'] . ')">Borrar</button>
+          </td>';
+    echo '</tr>';
+}
+
+echo '</tbody></table>';
+
+// Cierra la conexión a la base de datos
+mysqli_close($conn);
+?>
 
 
-        <button type="submit" class="btn btn-primary" id="btnGuardar2"><span
-                    class="glyphicon glyphicon-floppy-disk"></span> Guardar
-        </button>
-
-    </div>
-    <div class="col col-lg-7 col-md-7 col-sm-12 col-xs-12">
-        <h3 class="page-header">Nuevo Documento</h3>
-
-        <form id="frmDocumento" enctype="multipart/form-data">
-
-            <div class="form-group">
-                <label>Nombre del archivo</label>
-                <input type="text" class="form-control" name="nombre" id="nombre">
-                <br/>
-
-                <h3>Seleccionar archivo</h3>
-                <input type="file" id="archivo" name="archivo">
-                <br>
-
-                <button type="submit" class="btn btn-primary" id="btnGuardar"><span
-                            class="glyphicon glyphicon-floppy-disk"></span> Guardar Documento
-                </button>
-            </div>
-        </form>
-    </div>
-
-    <div class="row">
-        <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">.
-            <h3 class="page-header">Archivos del Marco Legal</h3 class="page-header">
-
-            <table id="tbDocumentos" class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th>Clave</th>
-                    <th>Nombre</th>
-                    <th>Archivo</th>
-                    <th>Operaciones</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
+    
 
 
 </div>

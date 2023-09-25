@@ -1,155 +1,125 @@
-                                              
-   
+<?php
+require_once('db_config.php');
+
+if (isset($_GET['id'])) {
+    $idformato = $_GET['id'];
+
+    // Consulta SQL para obtener los datos del formato seleccionado
+    $sqlFormato = "SELECT idformato, archivo, titulo FROM formatos WHERE idformato = $idformato";
+    $resultFormato = $conn->query($sqlFormato);
+
+    if ($resultFormato->num_rows == 1) {
+        $row = $resultFormato->fetch_assoc();
+        $archivo = $row['archivo'];
+        $titulo = $row['titulo'];
+    } else {
+        echo "Formato no encontrado.";
+        exit();
+    }
+} else {
+    echo "ID de formato no proporcionado.";
+    exit();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['guardar'])) {
+    // Obtener los datos enviados por el formulario
+    $nuevoArchivo = $_FILES['nuevo_archivo']['name'];
+    $nuevoTitulo = $_POST['nuevo_titulo'];
+
+    // Validar y procesar la nueva imagen si se ha cargado
+    if (!empty($nuevoArchivo)) {
+        $targetDirectory = "carpeta_destino/"; // Ruta donde se guardarán los archivos
+        $targetFile = $targetDirectory . basename($nuevoArchivo);
+        // Mover el archivo cargado a la carpeta de destino
+        move_uploaded_file($_FILES['nuevo_archivo']['tmp_name'], $targetFile);
+    } else {
+        $targetFile = $archivo; // Mantener el archivo existente si no se cargó uno nuevo
+    }
+
+    // Actualizar el formato en la base de datos
+    $sql = "UPDATE formatos SET archivo = '$targetFile', titulo = '$nuevoTitulo' WHERE idformato = $idformato";
+    
+    if ($conn->query($sql) === TRUE) {
+        // Formato actualizado con éxito
+        // Puedes redirigir o mostrar un mensaje de éxito
+        header("Location: formatos.php"); // Reemplaza 'tu_pagina.php' con la página a la que deseas redirigir
+        exit();
+    } else {
+        echo "Error al actualizar el formato: " . $conn->error;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<link rel="stylesheet" href="estiloAdmin.css">
-<link rel="stylesheet" href="normalize.css">
-<script src="nicEdit-latest.js" type="text/javascript"></script>
-<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
     <title>Modificar Formato</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
 
+        h1 {
+            background-color: #1356A4;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #1356A4;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0f457f;
+        }
+    </style>
 </head>
-<body style="background:#d9d9d9;">
-
-    <div class="menufondo">
-    <div class="enca-lenguajeb">
-       <div align="center">
-        </div>
-    </div>
-    <div class="logo">
-        <img src="../imagenes/logo.png" width="250" height="35" id="logovela">
-    </div>
-    <div class="divmenu">
-        <header>
- <div class="menu_bar">
-        <a href="#" class="bt-menu"><span class="icon-list"></span>Menu</a>
-  </div>
-		<nav class="menu">
-			<ul>
-                <li><a href="bienvenida.php" >Bienvenida</a></li>
-				<li><a href="usuarios.php" >Usuarios</a></li>
-				<li><a href="noticias.php" >Noticias</a></li>
-				<li><a href="formatos.php" class="activa">Formatos</a></li>
-				<li><a href="recaudacion.php" >Recaudación</a></li>
-				<li><a href="intereses.php" >Interes</a></li>
-				<li><a href="numerales.php" >Numerales</a></li>
-				<li><a href="privacidad.php" >Aviso de privacidad</a></li>
-				<li><a href="infraestructura.php" >Infraestructura</a></li>
-				<li><a href="patronato.php" >Patronato</a></li>
-				<li><a href="pantalla_principal.php" >Pantalla Principal</a></li>
-                <li><a href="secciones.php" >Secciones</a></li>
-
-				<li><a href="logout.php" >Salir</a></li>
-			</ul>
-		</nav>
-</header>
-    </div>
-</div>
-
-<div id="espacio3"></div>   
- <div align="center">
- 
-<!-- ------------------------- SEGUNDA SECCION -------------------------------------------------------------->
- 
-<form action="movadmin.php" method="post" name="form1" id="form1" enctype="multipart/form-data" >
-	<table border="2" width="70%" bordercolor="#000000" cellspacing="0" cellpadding="0"  bgcolor="white">
-		<tr>
-			<td>
-			<table border="0" width="100%" cellspacing="0" cellpadding="0">
-				<tr>
-					<td colspan="3">&nbsp;</td>
-				</tr>
-				<tr  bgcolor="#2B388F" height="25" >
-					<td colspan="3">
-                        <p align="center"><b>
-						<font size="4" color="white" face="Arial">PADRÓN DE PROVEEDORES</font></b></td>
-				</tr>
-				<tr>
-					<td width="11%">&nbsp;</td>
-					<td width="51%">&nbsp;</td>
-					<td width="28%">&nbsp;</td>
-				</tr>
-				<tr>
-					<td width="20%" align="right"><font face="Arial">&nbsp; Archivo:</font></td>
-					<td width="51%"><font facSe="Arial">&nbsp;&nbsp; </font><font size="3" face="Arial"><input type="file" name="archivo" id="archivo"></font></td>
-					<td width="28%"></td>
-				</tr>
-				
-				<tr>
-					<td width="11%">&nbsp;</td>
-					<td width="51%"><font face="Arial">&nbsp;Actual:
-                       PADRON_DE_PROVEEDORES_2023-02.pdf</font></td>
-					<td width="28%">&nbsp;</td>
-				</tr>
-				 	<tr>
-					<td width="20%">&nbsp;</td>
-					<td width="51%"></td>
-					<td width="28%">&nbsp;</td>
-				</tr>
+<body>
+    <h1>Modificar Formato</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="idformato" value="<?php echo $idformato; ?>">
         
-                <tr>
-					<td width="20%" align="right"><font face="Arial">&nbsp; 
-					TITULO:</font></td>
-					<td colspan="2">
-					   &nbsp; <input type="text" name="titulo" id="titulo" size="70" autocomplete="off" value="DESCARGA PADRÓN DE PROVEEDORES">
-					</td>
-				</tr>
-                <tr>
-					<td width="20%">&nbsp;</td>
-					<td width="51%"></td>
-					<td width="28%">&nbsp;</td>
-				</tr>
-             	<tr>
-					<td width="20%">&nbsp;</td>
-					<td width="51%"></td>
-					<td width="28%">&nbsp;</td>
-				</tr>
+        <label for="nuevo_archivo">Nuevo Archivo:</label>
+        <input type="file" id="nuevo_archivo" name="nuevo_archivo"><br><br>
         
-
-				<tr>
-					<td width="20%">&nbsp;</td>
-					<td width="51%"><font face="Arial">&nbsp;</font><font size="3" face="Arial">
-					
-					<input type="hidden" name="movi" value="formatos">
-					<input type="hidden" name="idimg" value="3">
-				    <input type="submit" name="guardar" value="Guardar" class="btn-admin">
-					
-					</font></td>
-					<td width="28%">&nbsp;</td>
-				</tr>
-				
-				<tr>
-					<td width="20%">&nbsp;</td>
-					<td width="51%"></td>
-					<td width="28%">&nbsp;</td>
-				</tr>
-			</table>
-			</td>
-		</tr>
-	</table>
-</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div> 
- 
- 
+        <label for="nuevo_titulo">Nuevo Título:</label>
+        <input type="text" id="nuevo_titulo" name="nuevo_titulo" value="<?php echo $titulo; ?>"><br><br>
+        
+        <input type="submit" name="guardar" value="Guardar Cambios">
+    </form>
 </body>
 </html>
