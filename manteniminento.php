@@ -107,7 +107,7 @@
 
     <?php
             
-
+            require_once('admin/db_config.php');
             // Consultar la base de datos para obtener las primeras 3 noticias
             $sql = "SELECT nombre, archivo FROM aviso_privacidad";
             $result = $conn->query($sql);
