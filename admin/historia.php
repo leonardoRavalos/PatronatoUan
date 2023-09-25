@@ -171,7 +171,7 @@ if ($result) {
                         <td height="5" bgcolor="#DEDEBE" align="center"><font face="Arial" size="2">&nbsp;<a href="modhistoria.php?id=' . $row['idfoto_historia'] . '">Editar</a></font></td>
                         <td height="5" bgcolor="#DEDEBE" align="center"><font face="Arial" size="2">&nbsp;<a href="eliminar_int.php?id=' . $row['idfoto_historia'] . ')">Eliminar</a></font></td>
                       </tr>';
-            }
+            } 
 
             // Cerrar la conexión a la base de datos
             mysqli_close($conn);

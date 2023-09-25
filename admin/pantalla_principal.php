@@ -19,7 +19,7 @@
 
     <script type="text/javascript" src="../assets/js/plugins/jquery.min.js"></script>
     <script type="text/javascript" src="../assets/js/plugins/jquery.form.min.js"></script>
-    <script type="text/javascript" src="../assets/js/plugins/jquery.validate.js"></script>
+    <script type="text/javascript" src="../assets/js/plugins/jquery.validate.js"></script> 
     <script type="text/javascript" src="../assets/js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../assets/js/plugins/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/tinymce/tinymce.min.js"></script>
@@ -73,42 +73,6 @@
 
 <div class="container">
 
-    <div id="modalChangeImage" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h3>Cambiar Imagen</h3>
-                </div>
-                <div class="modal-body">
-                    <form id="frmChangeImage" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label class="control-label" for="file2">Seleccione Fotografía</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-picture"></i>
-                                </span>
-                                <input type="file" class="btn btn-effect-ripple btn-default" id="imagen2" name="imagen">
-                            </div>
-                            <div align="center">
-                                <div id="loader-icon" style="display:none;"><br><img
-                                            src="../assets/images/LoaderIcon.gif"/></div>
-                            </div>
-                            <input type="hidden" id="id_portada" name="id_portada">
-                        </div>
-                    </form>
-                </div>
-
-                <div class="modal-footer">
-                    <button id="btnChangeImage" type="button" class="btn btn-sm btn-primary ">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Fin de modal de cambiar foto-->
-
     <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="pantalla_principal.php">Pantalla Principal</a></li>
@@ -120,22 +84,62 @@
     </div>
     <h1 class="page-header">Pantalla Principal</h1 class="page-header">
     <h3>Fotos de portada</h3>
-    <div class="row">
-        <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <table id="tbPortada" class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th>Clave</th>
-                    <th>Imagen</th>
-                    <th>Descripcion</th>
-                    <th>Imagen</th>
-                    <th>Operaciones</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
+    <div class="col col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
+    <br>
+    
+
+</div>
+
+
+    <br>
+    <br>
+<br>
+<br>
+<br>
+
+
+
+<div class="opciones">
+            <form method="GET" action="addimgportada.php">
+                <button type="submit" class="btn-admin2">AGREGAR IMAGEN</button>
+            </form>
+        </div>
+    <table border="1" width="60%" cellspacing="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#808080">
+            <tr>
+                <td width="3%" align="center" bgcolor="#1356A4"><b><font face="Arial" size="2" color="#FFFFFF">NO.</font></b></td>
+                <td width="20%" align="center" bgcolor="#1356A4"><b><font face="Arial" size="2" color="#FFFFFF">Imagen</font></b></td>
+                <td width="10%" align="center" bgcolor="#1356A4"><b><font face="Arial" size="2" color="#FFFFFF"></font></b></td>
+                <td width="6%" align="center" bgcolor="#1356A4"><b><font face="Arial" size="2" color="#FFFFFF"></font></b></td>
+                <td width="5%" align="center" bgcolor="#1356A4"><b><font face="Arial" size="2" color="#FFFFFF"></font></b></td>
+            </tr>
+            <?php
+            // Conectar a la base de datos
+            require_once('db_config.php');
+
+            // Consultar intereses
+            $query = "SELECT idpantalla, imagen FROM pantalla_principal";
+            $result = mysqli_query($conn, $query);
+
+            // Mostrar resultados
+            while ($row = mysqli_fetch_assoc($result)) {
+              $imagenURL = 'carpeta_destino/' . $row['imagen'];
+                echo '<tr>
+                        <td height="5" bgcolor="#DEDEBE" align="center"><font face="Arial" size="2">&nbsp; '. $row['idpantalla'] .'</font></td>
+                        <td height="5" bgcolor="#DEDEBE"><font face="Arial" size="2">&nbsp;'. $row['imagen'] .'</font></td>
+                        
+                        <td height="5" bgcolor="#DEDEBE" align="center"><font face="Arial" size="2">&nbsp;<a href="'. $imagenURL .'" target="_blank">Ver Imagen</a></font></td>
+                        <td height="5" bgcolor="#DEDEBE" align="center"><font face="Arial" size="2">&nbsp;<a href="modpantalla.php?id=' . $row['idpantalla'] . '">Editar</a></font></td>
+                        <td height="5" bgcolor="#DEDEBE" align="center"><font face="Arial" size="2">&nbsp;<a href="eliminar_pant.php?id=' . $row['idpantalla'] . ')">Eliminar</a></font></td>
+                      </tr>';
+            } 
+
+            // Cerrar la conexión a la base de datos
+            mysqli_close($conn);
+            ?>
+                </table>
+            </div>
+<br>
 
 </div>
 

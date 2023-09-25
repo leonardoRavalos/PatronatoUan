@@ -54,34 +54,54 @@
         </nav>
     </header>
 
-    <div class="banner-carousel">
-        <div class="banner-slide" style="background-image: url('./uploads/cover/DELFIN_2023.jpg');">
-        </div>
-        <div class="carousel-buttons">
-            <button id="prev-button" class="carousel-button">Anterior</button>
-            <button id="next-button" class="carousel-button">Siguiente</button>
-        </div>
-        <div class="banner-slide" style="background-image: url('./uploads/cover/SEO.png');">
-        </div>
-        <div class="carousel-buttons">
-            <button id="prev-button" class="carousel-button">Anterior</button>
-            <button id="next-button" class="carousel-button">Siguiente</button>
-        </div>
-        <div class="banner-slide" style="background-image: url('./uploads/cover/IMG_8596.png');">
-        </div>
-        <div class="carousel-buttons">
-            <button id="prev-button" class="carousel-button">Anterior</button>
-            <button id="next-button" class="carousel-button">Siguiente</button>
-        </div>
-        <div class="banner-slide" style="background-image: url('./uploads/cover/IMG_0464.png');">
-        </div>
-        <div class="banner-slide" style="background-image: url('./uploads/cover/3.jpg');">
-        </div>
-        <div class="carousel-buttons">
-            <button id="prev-button" class="carousel-button">Anterior</button>
-            <button id="next-button" class="carousel-button">Siguiente</button>
-        </div>
-    </div>
+    <<?php
+require_once('admin/db_config.php');
+
+
+// Verifica la conexión
+if ($conn->connect_error) {
+    die("Error de conexión a la base de datos: " . $conn->connect_error);
+}
+
+// Consulta para obtener los registros de la tabla pantalla_principal
+$sql = "SELECT imagen FROM pantalla_principal";
+$resultado = $conn->query($sql);
+
+// Verifica si se obtuvieron resultados
+if ($resultado->num_rows > 0) {
+    // Inicializa una variable para mantener un contador de banners
+    $bannerCounter = 0;
+
+    // Inicia el div del carrusel
+    echo '<div class="banner-carousel">';
+
+    // Itera sobre los resultados
+    while ($fila = $resultado->fetch_assoc()) {
+        $imagen = $fila['imagen'];
+        // Genera un div para cada imagen con un estilo de fondo
+        echo '<div class="banner-slide" style="background-image: url(\'./admin/carpeta_destino/' . $imagen . '\');"></div>';
+
+        // Agrega botones solo para la primera imagen de cada conjunto
+        if ($bannerCounter % 2 == 0) {
+            echo '
+                <div class="carousel-buttons">
+                    <button id="prev-button" class="carousel-button">Anterior</button>
+                    <button id="next-button" class="carousel-button">Siguiente</button>
+                </div>';
+        }
+
+        // Incrementa el contador de banners
+        $bannerCounter++;
+    }
+
+    // Cierra el div del carrusel
+    echo '</div>';
+} else {
+    echo "No se encontraron imágenes en la tabla pantalla_principal.";
+}
+
+?>
+
 
     <div class="centered-text">
     <img src="images/LOGO-01.png" alt="Logo Patronato UAN" class="logo-img">

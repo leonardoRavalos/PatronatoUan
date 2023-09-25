@@ -50,6 +50,43 @@
         .add-button:hover {
             background-color: #0f457f;
         }
+        .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    /* Estilos para el contenido del modal */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+    }
+
+    /* Estilos para el botón de cierre del modal */
+    .close {
+        color: #888;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    /* Estilos para el botón de cierre del modal al pasar el mouse */
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
 </style>
 
     <meta name="viewport"
@@ -128,11 +165,14 @@
 
 
         </ul>
+        
 
     </div>
     <h1>Patronato</h1>
     <br>
-    <a href="agregar_marco.php" class="add-button">Agregar Nuevo Marco Legal</a>
+    <button class="btn btn-primary" id="agregarMarcoLegal">Agregar marco legal</button>
+
+
     <?php
 require_once('db_config.php');
 
@@ -174,6 +214,40 @@ echo '</tbody></table>';
 // Cierra la conexión a la base de datos
 mysqli_close($conn);
 ?>
+
+
+<script>
+    document.getElementById('agregarMarcoLegal').addEventListener('click', function() {
+        document.getElementById('modal').style.display = 'block';
+    });
+
+    // Función para ocultar el modal
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    // Cierra el modal si se hace clic fuera del contenido del modal
+    window.onclick = function(event) {
+        var modal = document.getElementById('modal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
+<div id="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="descripcion">Descripción:</label>
+        <input type="text" name="descripcion" id="descripcion" required><br><br>
+        
+        <label for="archivo">Archivo PDF:</label>
+        <input type="file" name="archivo" id="archivo" accept=".pdf" required><br><br>
+        
+        <input type="submit" name="submit" value="Subir Datos">
+    </form>
+    </div>
+</div>
 
 
     
