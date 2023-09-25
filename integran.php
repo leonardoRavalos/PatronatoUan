@@ -92,7 +92,8 @@
                               // Recorrer los resultados y generar las tarjetas de noticias
                               while ($row = $result->fetch_assoc()) {
                                   $foto_integra = $row['foto_integra'];
-                                  echo '<img src="' . $foto_integra . '" alt="Descripción de la imagen" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">';
+                                  $pdfURL = 'admin/' . $row['foto_integra'];
+                                  echo '<img src="' . $pdfURL . '" alt="Descripción de la imagen" class="img-fluid img-new" style="padding: 0; right: 0; bottom: 0;">';
                               }
 
                               // Cerrar la conexión a la base de datos
@@ -132,7 +133,6 @@
                               }
 
                               // Cerrar la conexión a la base de datos
-                              $conn->close();
                               ?>
                                                             
 <p style="text-align: justify;"><span style="font-size: 12pt;">Para atender sus comentarios o dudas, la estructura administrativa le podr&aacute; atender en el correo: <a href="mailto:administracion@patronatouan.com">administracion@patronatouan.com</a></span></p>

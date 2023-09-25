@@ -138,8 +138,6 @@
                                 echo "No se encontraron registros en la tabla marco_legal.";
                             }
 
-                            // Cierra la conexión a la base de datos
-                            $conn->close();
                             ?>
                         </div>
                     </div>

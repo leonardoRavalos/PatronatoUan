@@ -147,8 +147,6 @@
 
                                 
                                 
-                                // Cierra la conexión a la base de datos
-                                $conn->close();
                                 
                                 ?>
                         </div>

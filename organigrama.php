@@ -93,8 +93,6 @@
                 echo '<img src="' . $imagenURL . '" alt="Organigrama" width="1150px">';
             }
 
-            // Cerrar la conexión a la base de datos
-            $conn->close();
             ?>
             </div>
             

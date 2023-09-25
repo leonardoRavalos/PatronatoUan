@@ -142,8 +142,6 @@
                             echo "No se encontraron registros en la tabla formatos para la sección 1.";
                         }
 
-                        // Cierra la conexión a la base de datos
-                        $conn->close();
                         ?>
 
                       </div>

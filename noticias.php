@@ -128,8 +128,6 @@ if ($result->num_rows > 0) {
     echo "No se encontraron noticias.";
 }
 
-// Cierra la conexión a la base de datos
-$conn->close();
 ?>
 
 

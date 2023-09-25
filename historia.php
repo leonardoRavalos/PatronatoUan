@@ -143,8 +143,6 @@
                 echo '<p style="text-align: justify; margin-right: 50px;"><span style="font-size: 12pt; ">' . $historia . '</span></p>';
                 }
 
-                // Cerrar la conexión a la base de datos
-                $conn->close();
                 ?>                
         </div>
     </div>

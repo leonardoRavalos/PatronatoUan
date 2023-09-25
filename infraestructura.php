@@ -140,7 +140,6 @@ if ($result->num_rows > 0) {
     }
 
     // Cierra la conexión a la base de datos
-    $conn->close();
 } else {
     echo "No se encontraron categorías o proyectos.";
 }

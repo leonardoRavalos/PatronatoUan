@@ -128,7 +128,6 @@
                                 echo '<p style="text-align: justify;"><span style="font-size: 12pt;">' . $que . '</span></p>';
                               }
                               
-                              $conn->close();
 
                               ?>
                           
