@@ -39,6 +39,7 @@
                     <ul class="submenu">
                         <li><a href="https://www.plataformadetransparencia.org.mx/">PLATAFORMA NACIONAL DE TRANSPARENCIA</a></li>
                         <li><a href="https://transparencia.nayarit.gob.mx/index.php?option=com_wrapper&view=wrapper&Itemid=495">PLATAFORMA ESTATAL DEL TRANSPARENCIA </a></li>
+                        <li><a href="numerales.php">LEY ACTUAL </a></li>
                     </ul>
                 </li>
                 <li><a href="#">OBRA PUBLICA</a>
